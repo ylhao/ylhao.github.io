@@ -1,0 +1,2368 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>LSI算法实现篇 | 衣介书生</title>
+  <meta name="keywords" content=" 机器学习 , NLP ">
+  <meta name="description" content="LSI算法实现篇 | 衣介书生">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="关于我教育经历 2012/09 ~ 2016/07：大连理工大学 2016/09 ~ 2019/06：中国科学院大学  主要方向 Machine Learning Deep Learning  技能点 C/C++/Java/Python Machine Learning Deep Learning TensorFlow Keras scikit-learn numpy/pandas/matplot">
+<meta property="og:type" content="website">
+<meta property="og:title" content="衣介书生">
+<meta property="og:url" content="https://ylhao.github.io/about/index.html">
+<meta property="og:site_name" content="衣介书生">
+<meta property="og:description" content="关于我教育经历 2012/09 ~ 2016/07：大连理工大学 2016/09 ~ 2019/06：中国科学院大学  主要方向 Machine Learning Deep Learning  技能点 C/C++/Java/Python Machine Learning Deep Learning TensorFlow Keras scikit-learn numpy/pandas/matplot">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-07T03:50:53.825Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="衣介书生">
+<meta name="twitter:description" content="关于我教育经历 2012/09 ~ 2016/07：大连理工大学 2016/09 ~ 2019/06：中国科学院大学  主要方向 Machine Learning Deep Learning  技能点 C/C++/Java/Python Machine Learning Deep Learning TensorFlow Keras scikit-learn numpy/pandas/matplot">
+
+
+<link rel="icon" href="/img/avatar.ico">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/hl_theme/atom-light.css">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="true">
+</div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>ylhao</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/ylhao" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/cd0d6ca939b1" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="zhihu" href="https://www.zhihu.com/people/yi-long-hao/activities" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="csdn" href="https://me.csdn.net/u012071811" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-csdn"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+</div>
+
+<ul>
+    <li class="all active">全部文章</li>
+    
+    <li data-rel="机器学习"> 机器学习 </li>
+    
+    <li data-rel="技术"> 技术 </li>
+    
+    <li data-rel="算法"> 算法 </li>
+    
+    <li data-rel="剑指Offer"> 剑指Offer </li>
+    
+    <li data-rel="编程"> 编程 </li>
+    
+    <li data-rel="LeetCode"> LeetCode </li>
+    
+    <li data-rel="安全"> 安全 </li>
+    
+</ul>
+
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    </div>
+    <div><a style="border-right: 1px solid #fff; width: 49%" class="about site_url" href="/about">关于</a><a style="width: 50%" class="friends">友链</a></div>
+</div>
+
+<input type="hidden" id="yelog_site_posts_number" value="253">
+
+<input type="hidden" id="yelog_site_word_count" value="126.8k">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="https://guanpengchn.github.io/#/">guanpeng</a></li>
+            
+            <li><a target="_blank" href="https://github.com/zhangyachen/zhangyachen.github.io/issues">zhangyachen</a></li>
+            
+            <li><a target="_blank" href="http://www.ruanyifeng.com/home.html">阮一峰</a></li>
+            
+            <li><a target="_blank" href="https://www.liaoxuefeng.com/">廖雪峰</a></li>
+            
+            <li><a target="_blank" href="https://morvanzhou.github.io/">周沫凡</a></li>
+            
+            <li><a target="_blank" href="https://www.cnblogs.com/pinard/">刘建平</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="以 in: 开头进行全文搜索" autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+        <label for="tagswitch">Tags:</label>
+        <input id="tagswitch" type="checkbox">
+    </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">机器学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">计算机网络</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数据结构与算法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">刷题</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">Linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">编程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">Hadoop</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">C++</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">字符串处理</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">哈希表</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">Python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">Git</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">SSH</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">JavaScript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">NLP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">安全</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">GCC</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">scikit-learn</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">基本实现</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">防火墙</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">TensorFlow</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">博客管理</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">LSTM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">SQL</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">tensorflow</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">Tomcat</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">工具</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">动态规划</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">make</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">makefile</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="技术 " href="/2019/01/07/catalog/" data-tag="博客管理" data-author="">
+            <span class="post-title" title="文章目录">文章目录</span>
+            <span class="post-date" title="2019-01-07 13:40:28">2019/01/07</span>
+        </a>
+        
+        <a id="top" class="技术 " href="/2019/01/07/258/" data-tag="博客管理" data-author="">
+            <span class="post-title" title="博客维护日志">博客维护日志</span>
+            <span class="post-date" title="2019-01-07 13:52:22">2019/01/07</span>
+        </a>
+        
+        <a class="" href="/2019/06/07/113/" data-tag="" data-author="">
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-06-07 11:50:53">2019/06/07</span>
+        </a>
+        
+        <a class="技术 " href="/2019/05/18/272/" data-tag="Linux" data-author="">
+            <span class="post-title" title="Linux 压缩 解压缩">Linux 压缩 解压缩</span>
+            <span class="post-date" title="2019-05-18 09:41:52">2019/05/18</span>
+        </a>
+        
+        <a class="机器学习 " href="/2019/05/17/271/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="PageRank算法的核心思想">PageRank算法的核心思想</span>
+            <span class="post-date" title="2019-05-17 23:50:13">2019/05/17</span>
+        </a>
+        
+        <a class="编程 " href="/2019/05/16/270/" data-tag="编程,SQL" data-author="">
+            <span class="post-title" title="MySQL中的utf8mb4">MySQL中的utf8mb4</span>
+            <span class="post-date" title="2019-05-16 23:45:12">2019/05/16</span>
+        </a>
+        
+        <a class="机器学习 " href="/2019/05/15/269/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="FM和FFM算法">FM和FFM算法</span>
+            <span class="post-date" title="2019-05-15 17:09:10">2019/05/15</span>
+        </a>
+        
+        <a class="机器学习 " href="/2019/05/13/268/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="t-SNE（t-distributed Stochastic Neighbor Embedding）简介与示例">t-SNE（t-distributed Stochastic Neighbor Embedding）简介与示例</span>
+            <span class="post-date" title="2019-05-13 19:38:58">2019/05/13</span>
+        </a>
+        
+        <a class="机器学习 " href="/2019/05/13/267/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="自然语言处理中CNN模型几种常见的Max Pooling操作">自然语言处理中CNN模型几种常见的Max Pooling操作</span>
+            <span class="post-date" title="2019-05-13 15:09:47">2019/05/13</span>
+        </a>
+        
+        <a class="机器学习 " href="/2019/05/13/266/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="局部响应归一化（Local Response Normalization）">局部响应归一化（Local Response Normalization）</span>
+            <span class="post-date" title="2019-05-13 13:51:30">2019/05/13</span>
+        </a>
+        
+        <a class="机器学习 " href="/2019/05/13/265/" data-tag="LSTM" data-author="">
+            <span class="post-title" title="BiLSTM介绍">BiLSTM介绍</span>
+            <span class="post-date" title="2019-05-13 11:31:04">2019/05/13</span>
+        </a>
+        
+        <a class="编程 " href="/2019/03/30/264/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="C++ 中的 rand 函数和 srand 函数">C++ 中的 rand 函数和 srand 函数</span>
+            <span class="post-date" title="2019-03-30 10:12:18">2019/03/30</span>
+        </a>
+        
+        <a class="编程 " href="/2019/03/30/263/" data-tag="编程,Python" data-author="">
+            <span class="post-title" title="Python 中的 __all__">Python 中的 __all__</span>
+            <span class="post-date" title="2019-03-30 00:08:27">2019/03/30</span>
+        </a>
+        
+        <a class="编程 " href="/2019/03/22/262/" data-tag="编程,Java" data-author="">
+            <span class="post-title" title="Java 面试总结（二）">Java 面试总结（二）</span>
+            <span class="post-date" title="2019-03-22 08:35:08">2019/03/22</span>
+        </a>
+        
+        <a class="编程 " href="/2019/03/20/261/" data-tag="编程,Java" data-author="">
+            <span class="post-title" title="Java 面试总结（一）">Java 面试总结（一）</span>
+            <span class="post-date" title="2019-03-20 17:31:39">2019/03/20</span>
+        </a>
+        
+        <a class="技术 " href="/2019/03/18/260/" data-tag="Linux" data-author="">
+            <span class="post-title" title="Ubuntu16.04 挂载 4TB 硬盘并更换 home 目录">Ubuntu16.04 挂载 4TB 硬盘并更换 home 目录</span>
+            <span class="post-date" title="2019-03-18 14:28:56">2019/03/18</span>
+        </a>
+        
+        <a class="技术 " href="/2019/03/13/259/" data-tag="Linux" data-author="">
+            <span class="post-title" title="Ubuntu16.04 安装 JDK">Ubuntu16.04 安装 JDK</span>
+            <span class="post-date" title="2019-03-13 22:31:41">2019/03/13</span>
+        </a>
+        
+        <a class="算法 " href="/2018/09/11/55/" data-tag="数据结构与算法" data-author="">
+            <span class="post-title" title="Pycharm的安装与使用">Pycharm的安装与使用</span>
+            <span class="post-date" title="2018-09-11 10:18:51">2018/09/11</span>
+        </a>
+        
+        <a class="技术 " href="/2018/09/11/9/" data-tag="Python" data-author="">
+            <span class="post-title" title="Windows安装Python3.6">Windows安装Python3.6</span>
+            <span class="post-date" title="2018-09-11 08:19:44">2018/09/11</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/09/07/106/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="TensorFlow：保存和加载模型">TensorFlow：保存和加载模型</span>
+            <span class="post-date" title="2018-09-07 16:02:28">2018/09/07</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/09/06/32/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="TensorFlow：波士顿房价预测">TensorFlow：波士顿房价预测</span>
+            <span class="post-date" title="2018-09-06 15:29:39">2018/09/06</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/09/06/96/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="TensorFlow：文本分类基本流程">TensorFlow：文本分类基本流程</span>
+            <span class="post-date" title="2018-09-06 12:24:54">2018/09/06</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/09/06/185/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="TensorFlow：基本分类算法的基本流程">TensorFlow：基本分类算法的基本流程</span>
+            <span class="post-date" title="2018-09-06 10:17:13">2018/09/06</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/09/06/142/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="GPU测试代码">GPU测试代码</span>
+            <span class="post-date" title="2018-09-06 00:53:10">2018/09/06</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/09/06/153/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="GPU 状态监测 nvidia-smi 命令详解">GPU 状态监测 nvidia-smi 命令详解</span>
+            <span class="post-date" title="2018-09-06 00:10:13">2018/09/06</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/09/05/124/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="什么是CUDA（入门资料）？">什么是CUDA（入门资料）？</span>
+            <span class="post-date" title="2018-09-05 17:48:12">2018/09/05</span>
+        </a>
+        
+        <a class="技术 " href="/2018/09/04/125/" data-tag="Linux" data-author="">
+            <span class="post-title" title="ubuntu16.04GPU配置">ubuntu16.04GPU配置</span>
+            <span class="post-date" title="2018-09-04 13:52:48">2018/09/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/09/04/211/" data-tag="Linux" data-author="">
+            <span class="post-title" title="Linux设置静态IP">Linux设置静态IP</span>
+            <span class="post-date" title="2018-09-04 13:19:24">2018/09/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/09/04/223/" data-tag="Linux" data-author="">
+            <span class="post-title" title="使用阿里云服务器和autossh实现内网穿透">使用阿里云服务器和autossh实现内网穿透</span>
+            <span class="post-date" title="2018-09-04 11:54:22">2018/09/04</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/31/128/" data-tag="机器学习,Python" data-author="">
+            <span class="post-title" title="Python：超简BP算法实现（原理再现）">Python：超简BP算法实现（原理再现）</span>
+            <span class="post-date" title="2018-08-31 09:26:04">2018/08/31</span>
+        </a>
+        
+        <a class="技术 " href="/2018/08/30/218/" data-tag="Linux" data-author="">
+            <span class="post-title" title="ubuntu16.04添加删除用户">ubuntu16.04添加删除用户</span>
+            <span class="post-date" title="2018-08-30 00:24:09">2018/08/30</span>
+        </a>
+        
+        <a class="技术 " href="/2018/08/29/86/" data-tag="Linux" data-author="">
+            <span class="post-title" title="Ubuntu16.04配置Hexo">Ubuntu16.04配置Hexo</span>
+            <span class="post-date" title="2018-08-29 22:13:34">2018/08/29</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/29/237/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：union介绍及其应用">CPP：union介绍及其应用</span>
+            <span class="post-date" title="2018-08-29 08:42:58">2018/08/29</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/29/257/" data-tag="编程,Python" data-author="">
+            <span class="post-title" title="Python：if __name__  == &#34;__main__&#34;">Python：if __name__  == &#34;__main__&#34;</span>
+            <span class="post-date" title="2018-08-29 00:02:54">2018/08/29</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/28/84/" data-tag="编程,Python" data-author="">
+            <span class="post-title" title="Python：Python中的编码问题">Python：Python中的编码问题</span>
+            <span class="post-date" title="2018-08-28 10:03:34">2018/08/28</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/28/77/" data-tag="编程,Python" data-author="">
+            <span class="post-title" title="Python：sorted函数对字典按key排序和按value排序">Python：sorted函数对字典按key排序和按value排序</span>
+            <span class="post-date" title="2018-08-28 09:26:59">2018/08/28</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/08/26/121/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="机器学习资料整理">机器学习资料整理</span>
+            <span class="post-date" title="2018-08-26 20:59:13">2018/08/26</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/21/249/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：出卷子">笔试题：出卷子</span>
+            <span class="post-date" title="2018-08-21 10:48:54">2018/08/21</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/21/188/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：围棋的气">笔试题：围棋的气</span>
+            <span class="post-date" title="2018-08-21 10:12:25">2018/08/21</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/21/241/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：最大连乘积">笔试题：最大连乘积</span>
+            <span class="post-date" title="2018-08-21 09:37:21">2018/08/21</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/21/140/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：合法的三角形个数">笔试题：合法的三角形个数</span>
+            <span class="post-date" title="2018-08-21 09:12:55">2018/08/21</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/19/154/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：抢钱游戏">笔试题：抢钱游戏</span>
+            <span class="post-date" title="2018-08-19 00:07:27">2018/08/19</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/18/21/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：电脑耗电量计算">笔试题：电脑耗电量计算</span>
+            <span class="post-date" title="2018-08-18 21:51:47">2018/08/18</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/18/253/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：所有区间的极差值之和">笔试题：所有区间的极差值之和</span>
+            <span class="post-date" title="2018-08-18 21:46:00">2018/08/18</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/16/222/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：股票利润的问题">笔试题：股票利润的问题</span>
+            <span class="post-date" title="2018-08-16 09:03:07">2018/08/16</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/15/229/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：各个sum问题">笔试题：各个sum问题</span>
+            <span class="post-date" title="2018-08-15 22:12:27">2018/08/15</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/15/198/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：求两个有序整型数组的交集">笔试题：求两个有序整型数组的交集</span>
+            <span class="post-date" title="2018-08-15 21:35:09">2018/08/15</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/15/74/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：进制转换">笔试题：进制转换</span>
+            <span class="post-date" title="2018-08-15 21:20:10">2018/08/15</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/15/164/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：大数相乘">笔试题：大数相乘</span>
+            <span class="post-date" title="2018-08-15 20:15:31">2018/08/15</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/15/93/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：全排列和子集问题">笔试题：全排列和子集问题</span>
+            <span class="post-date" title="2018-08-15 19:14:15">2018/08/15</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/15/179/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：二叉树遍历算法的实现">CPP：二叉树遍历算法的实现</span>
+            <span class="post-date" title="2018-08-15 18:10:53">2018/08/15</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/13/45/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：split函数的实现">笔试题：split函数的实现</span>
+            <span class="post-date" title="2018-08-13 21:50:42">2018/08/13</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/08/165/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：使用堆求TopK">笔试题：使用堆求TopK</span>
+            <span class="post-date" title="2018-08-08 21:00:20">2018/08/08</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/08/176/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：并查集">笔试题：并查集</span>
+            <span class="post-date" title="2018-08-08 18:00:56">2018/08/08</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/08/115/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：动态规划">笔试题：动态规划</span>
+            <span class="post-date" title="2018-08-08 00:04:51">2018/08/08</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/06/89/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：网易-会话列表">笔试题：网易-会话列表</span>
+            <span class="post-date" title="2018-08-06 13:06:39">2018/08/06</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/06/122/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：网易-时钟">笔试题：网易-时钟</span>
+            <span class="post-date" title="2018-08-06 11:23:07">2018/08/06</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/06/60/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：从n个数中随机选m个">笔试题：从n个数中随机选m个</span>
+            <span class="post-date" title="2018-08-06 10:53:23">2018/08/06</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/06/152/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：八皇后问题">笔试题：八皇后问题</span>
+            <span class="post-date" title="2018-08-06 09:06:33">2018/08/06</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/05/52/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：atoi">笔试题：atoi</span>
+            <span class="post-date" title="2018-08-05 16:27:08">2018/08/05</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/05/135/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：循环队列">笔试题：循环队列</span>
+            <span class="post-date" title="2018-08-05 15:38:50">2018/08/05</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/05/145/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：大数相加">笔试题：大数相加</span>
+            <span class="post-date" title="2018-08-05 14:46:29">2018/08/05</span>
+        </a>
+        
+        <a class="编程 " href="/2018/08/05/170/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试题：堆排序">笔试题：堆排序</span>
+            <span class="post-date" title="2018-08-05 13:34:03">2018/08/05</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/08/05/70/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Search in Rotated Sorted Array">Search in Rotated Sorted Array</span>
+            <span class="post-date" title="2018-08-05 11:01:42">2018/08/05</span>
+        </a>
+        
+        <a class="编程 " href="/2018/07/19/24/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="笔试：笔试题练习">笔试：笔试题练习</span>
+            <span class="post-date" title="2018-07-19 14:35:31">2018/07/19</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/06/25/43/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Nth Dight">Nth Dight</span>
+            <span class="post-date" title="2018-06-25 15:48:54">2018/06/25</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/06/25/49/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="N-Queens II">N-Queens II</span>
+            <span class="post-date" title="2018-06-25 15:14:35">2018/06/25</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/06/25/209/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="N-Queens">N-Queens</span>
+            <span class="post-date" title="2018-06-25 15:09:29">2018/06/25</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/06/25/15/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Permutations II">Permutations II</span>
+            <span class="post-date" title="2018-06-25 14:48:23">2018/06/25</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/06/25/226/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Permutations">Permutations</span>
+            <span class="post-date" title="2018-06-25 14:31:48">2018/06/25</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/25/53/" data-tag="SQL" data-author="">
+            <span class="post-title" title="SQL：知识点总结">SQL：知识点总结</span>
+            <span class="post-date" title="2018-06-25 11:32:04">2018/06/25</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/06/25/83/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Construct-Binary-Tree-from-Inorde-and-Postorder-Traversal">Construct-Binary-Tree-from-Inorde-and-Postorder-Traversal</span>
+            <span class="post-date" title="2018-06-25 11:24:20">2018/06/25</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/06/25/47/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Construct Binary Tree from Preorde and Inorder Traversal">Construct Binary Tree from Preorde and Inorder Traversal</span>
+            <span class="post-date" title="2018-06-25 10:59:27">2018/06/25</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/06/25/175/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Divide Two Integers">Divide Two Integers</span>
+            <span class="post-date" title="2018-06-25 09:36:28">2018/06/25</span>
+        </a>
+        
+        <a class="算法 " href="/2018/06/22/119/" data-tag="数据结构与算法" data-author="">
+            <span class="post-title" title="数据结构与算法：树结构总结">数据结构与算法：树结构总结</span>
+            <span class="post-date" title="2018-06-22 15:01:46">2018/06/22</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/22/78/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：字符串比较">CPP：字符串比较</span>
+            <span class="post-date" title="2018-06-22 13:04:29">2018/06/22</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/22/27/" data-tag="编程,Java" data-author="">
+            <span class="post-title" title="Java：二叉树的遍历算法实现">Java：二叉树的遍历算法实现</span>
+            <span class="post-date" title="2018-06-22 11:02:00">2018/06/22</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/22/213/" data-tag="编程,Java" data-author="">
+            <span class="post-title" title="Java：排序算法实现">Java：排序算法实现</span>
+            <span class="post-date" title="2018-06-22 10:36:56">2018/06/22</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/19/158/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：二分查找">CPP：二分查找</span>
+            <span class="post-date" title="2018-06-19 11:34:19">2018/06/19</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/19/111/" data-tag="编程,Hadoop" data-author="">
+            <span class="post-title" title="Hadoop：单节点伪分布式">Hadoop：单节点伪分布式</span>
+            <span class="post-date" title="2018-06-19 09:31:36">2018/06/19</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/19/97/" data-tag="编程,Hadoop" data-author="">
+            <span class="post-title" title="Hadoop：入门篇-基本流程">Hadoop：入门篇-基本流程</span>
+            <span class="post-date" title="2018-06-19 09:15:57">2018/06/19</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/12/196/" data-tag="编程,scikit-learn" data-author="">
+            <span class="post-title" title="sklearn：SVC算法和随机森林算法实战">sklearn：SVC算法和随机森林算法实战</span>
+            <span class="post-date" title="2018-06-12 13:09:49">2018/06/12</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/12/245/" data-tag="编程,TensorFlow" data-author="">
+            <span class="post-title" title="TensorFlow：Softmax识别手写数字">TensorFlow：Softmax识别手写数字</span>
+            <span class="post-date" title="2018-06-12 12:26:15">2018/06/12</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/08/143/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：结构体">CPP：结构体</span>
+            <span class="post-date" title="2018-06-08 09:08:27">2018/06/08</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/08/250/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：void和void指针">CPP：void和void指针</span>
+            <span class="post-date" title="2018-06-08 08:30:53">2018/06/08</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/07/25/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：memset函数">CPP：memset函数</span>
+            <span class="post-date" title="2018-06-07 23:54:53">2018/06/07</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/07/139/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：刷题常用知识点">CPP：刷题常用知识点</span>
+            <span class="post-date" title="2018-06-07 19:01:51">2018/06/07</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/07/95/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：字符串指针与字符数组的区别">CPP：字符串指针与字符数组的区别</span>
+            <span class="post-date" title="2018-06-07 18:49:36">2018/06/07</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/05/166/" data-tag="编程,Python" data-author="">
+            <span class="post-title" title="Python：requirements.txt文件">Python：requirements.txt文件</span>
+            <span class="post-date" title="2018-06-05 00:15:49">2018/06/05</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/06/04/171/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="层次聚类算法">层次聚类算法</span>
+            <span class="post-date" title="2018-06-04 20:54:01">2018/06/04</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/04/44/" data-tag="编程,JavaScript" data-author="">
+            <span class="post-title" title="JavaScript：gulp学习指南">JavaScript：gulp学习指南</span>
+            <span class="post-date" title="2018-06-04 20:37:39">2018/06/04</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/04/168/" data-tag="编程,JavaScript" data-author="">
+            <span class="post-title" title="JavaScript：gulp自动化构建工具">JavaScript：gulp自动化构建工具</span>
+            <span class="post-date" title="2018-06-04 20:33:50">2018/06/04</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/04/248/" data-tag="编程,JavaScript" data-author="">
+            <span class="post-title" title="JavaScript：Babel转码器">JavaScript：Babel转码器</span>
+            <span class="post-date" title="2018-06-04 20:28:58">2018/06/04</span>
+        </a>
+        
+        <a class="编程 " href="/2018/06/04/148/" data-tag="编程,JavaScript" data-author="">
+            <span class="post-title" title="JavaScript：npm包管理工具">JavaScript：npm包管理工具</span>
+            <span class="post-date" title="2018-06-04 20:08:52">2018/06/04</span>
+        </a>
+        
+        <a class="算法 " href="/2018/06/04/75/" data-tag="数据结构与算法" data-author="">
+            <span class="post-title" title="数据结构与算法：最小生成树MST">数据结构与算法：最小生成树MST</span>
+            <span class="post-date" title="2018-06-04 20:04:22">2018/06/04</span>
+        </a>
+        
+        <a class="算法 " href="/2018/06/04/102/" data-tag="数据结构与算法" data-author="">
+            <span class="post-title" title="数据结构与算法：KMP算法">数据结构与算法：KMP算法</span>
+            <span class="post-date" title="2018-06-04 19:58:43">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/80/" data-tag="Linux" data-author="">
+            <span class="post-title" title="统计一个文件夹下的文件个数">统计一个文件夹下的文件个数</span>
+            <span class="post-date" title="2018-06-04 19:53:51">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/40/" data-tag="Linux" data-author="">
+            <span class="post-title" title="grep命令">grep命令</span>
+            <span class="post-date" title="2018-06-04 19:50:11">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/184/" data-tag="Linux" data-author="">
+            <span class="post-title" title="vim实用配置和常用功能总结">vim实用配置和常用功能总结</span>
+            <span class="post-date" title="2018-06-04 18:56:06">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/117/" data-tag="Linux" data-author="">
+            <span class="post-title" title="useradd和adduser的区别与联系">useradd和adduser的区别与联系</span>
+            <span class="post-date" title="2018-06-04 18:51:29">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/206/" data-tag="Linux" data-author="">
+            <span class="post-title" title="ssh命令登录远程主机">ssh命令登录远程主机</span>
+            <span class="post-date" title="2018-06-04 18:41:58">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/61/" data-tag="Linux" data-author="">
+            <span class="post-title" title="source命令的作用">source命令的作用</span>
+            <span class="post-date" title="2018-06-04 18:39:19">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/200/" data-tag="Linux" data-author="">
+            <span class="post-title" title="scp远程拷贝命令">scp远程拷贝命令</span>
+            <span class="post-date" title="2018-06-04 18:36:25">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/30/" data-tag="Linux" data-author="">
+            <span class="post-title" title="空设备文件和重定向">空设备文件和重定向</span>
+            <span class="post-date" title="2018-06-04 12:42:32">2018/06/04</span>
+        </a>
+        
+        <a class="" href="/2018/06/04/79/" data-tag="" data-author="">
+            <span class="post-title" title="解释dev/null与2">解释dev/null与2</span>
+            <span class="post-date" title="2018-06-04 12:41:25">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/192/" data-tag="Linux" data-author="">
+            <span class="post-title" title="SUID权限">SUID权限</span>
+            <span class="post-date" title="2018-06-04 12:10:48">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/150/" data-tag="Linux" data-author="">
+            <span class="post-title" title="Ubuntu必备手册">Ubuntu必备手册</span>
+            <span class="post-date" title="2018-06-04 12:01:42">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/6/" data-tag="Linux,Tomcat" data-author="">
+            <span class="post-title" title="在Ubuntu上安装Tomcat">在Ubuntu上安装Tomcat</span>
+            <span class="post-date" title="2018-06-04 11:01:26">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/194/" data-tag="Linux,GCC" data-author="">
+            <span class="post-title" title="GCC编译器">GCC编译器</span>
+            <span class="post-date" title="2018-06-04 10:56:27">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/212/" data-tag="Linux" data-author="">
+            <span class="post-title" title="dpkg包管理器">dpkg包管理器</span>
+            <span class="post-date" title="2018-06-04 10:50:05">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/81/" data-tag="Linux" data-author="">
+            <span class="post-title" title="profile文件和环境变量">profile文件和环境变量</span>
+            <span class="post-date" title="2018-06-04 10:12:22">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/254/" data-tag="Linux" data-author="">
+            <span class="post-title" title="Ubuntu常用快捷键">Ubuntu常用快捷键</span>
+            <span class="post-date" title="2018-06-04 09:57:04">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/208/" data-tag="Linux" data-author="">
+            <span class="post-title" title="Linux命令行常用快捷方式">Linux命令行常用快捷方式</span>
+            <span class="post-date" title="2018-06-04 09:54:54">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/195/" data-tag="Linux" data-author="">
+            <span class="post-title" title="更新Ubuntu内核">更新Ubuntu内核</span>
+            <span class="post-date" title="2018-06-04 09:51:06">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/90/" data-tag="make,makefile" data-author="">
+            <span class="post-title" title="make与makefile">make与makefile</span>
+            <span class="post-date" title="2018-06-04 09:37:21">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/109/" data-tag="Linux" data-author="">
+            <span class="post-title" title="修改hosts文件">修改hosts文件</span>
+            <span class="post-date" title="2018-06-04 09:32:51">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/240/" data-tag="计算机网络" data-author="">
+            <span class="post-title" title="计算机网络：交换机、路由器、网关">计算机网络：交换机、路由器、网关</span>
+            <span class="post-date" title="2018-06-04 09:30:52">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/131/" data-tag="Git" data-author="">
+            <span class="post-title" title="gitignore文件">gitignore文件</span>
+            <span class="post-date" title="2018-06-04 09:23:25">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/59/" data-tag="Git" data-author="">
+            <span class="post-title" title="Git基本操作">Git基本操作</span>
+            <span class="post-date" title="2018-06-04 09:15:14">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/243/" data-tag="Linux,防火墙" data-author="">
+            <span class="post-title" title="Ubuntu防火墙配置（UFW）">Ubuntu防火墙配置（UFW）</span>
+            <span class="post-date" title="2018-06-04 08:46:28">2018/06/04</span>
+        </a>
+        
+        <a class="技术 " href="/2018/06/04/141/" data-tag="Linux,SSH" data-author="">
+            <span class="post-title" title="SSH远程端口转发">SSH远程端口转发</span>
+            <span class="post-date" title="2018-06-04 08:30:37">2018/06/04</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/31/46/" data-tag="机器学习,tensorflow" data-author="">
+            <span class="post-title" title="CNN：识别手写数字代码实现">CNN：识别手写数字代码实现</span>
+            <span class="post-date" title="2018-05-31 09:22:38">2018/05/31</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/25/71/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="深度残差网络（ResNet）">深度残差网络（ResNet）</span>
+            <span class="post-date" title="2018-05-25 13:40:42">2018/05/25</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/25/224/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="CNN：池化层">CNN：池化层</span>
+            <span class="post-date" title="2018-05-25 00:26:59">2018/05/25</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/24/252/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="CNN：卷积层和简单的CNN网络结构">CNN：卷积层和简单的CNN网络结构</span>
+            <span class="post-date" title="2018-05-24 22:50:04">2018/05/24</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/24/5/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="CNN：CV、边缘检测、卷积运算、Padding、Stride、filter">CNN：CV、边缘检测、卷积运算、Padding、Stride、filter</span>
+            <span class="post-date" title="2018-05-24 18:49:04">2018/05/24</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/24/120/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="循环神经网络：LSTM">循环神经网络：LSTM</span>
+            <span class="post-date" title="2018-05-24 13:21:40">2018/05/24</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/24/216/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="循环神经网络：RNN简介、BPTT算法、梯度消失、梯度爆炸">循环神经网络：RNN简介、BPTT算法、梯度消失、梯度爆炸</span>
+            <span class="post-date" title="2018-05-24 01:08:48">2018/05/24</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/23/149/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="循环神经网络：简单结构的循环神经网络">循环神经网络：简单结构的循环神经网络</span>
+            <span class="post-date" title="2018-05-23 22:21:28">2018/05/23</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/23/167/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="循环神经网络：GRU">循环神经网络：GRU</span>
+            <span class="post-date" title="2018-05-23 16:55:34">2018/05/23</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/05/22/72/" data-tag="数据结构与算法,刷题,动态规划" data-author="">
+            <span class="post-title" title="Coin Change">Coin Change</span>
+            <span class="post-date" title="2018-05-22 23:01:10">2018/05/22</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/05/22/87/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Wiggle Sort II">Wiggle Sort II</span>
+            <span class="post-date" title="2018-05-22 22:17:42">2018/05/22</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/05/22/219/" data-tag="数据结构与算法,刷题,基本实现" data-author="">
+            <span class="post-title" title="Shuffle an Array">Shuffle an Array</span>
+            <span class="post-date" title="2018-05-22 21:44:00">2018/05/22</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/05/22/127/" data-tag="数据结构与算法,刷题,字符串处理,哈希表" data-author="">
+            <span class="post-title" title="First Unique Character in a String">First Unique Character in a String</span>
+            <span class="post-date" title="2018-05-22 21:27:25">2018/05/22</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/05/22/203/" data-tag="数据结构与算法,刷题,哈希表" data-author="">
+            <span class="post-title" title="4Sum II">4Sum II</span>
+            <span class="post-date" title="2018-05-22 21:10:54">2018/05/22</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/05/22/12/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="3Sum">3Sum</span>
+            <span class="post-date" title="2018-05-22 00:23:44">2018/05/22</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/05/21/2/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Longest Substring Without Repeating Characters">Longest Substring Without Repeating Characters</span>
+            <span class="post-date" title="2018-05-21 22:53:32">2018/05/21</span>
+        </a>
+        
+        <a class="LeetCode " href="/2018/05/21/159/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="Add Two Numbers">Add Two Numbers</span>
+            <span class="post-date" title="2018-05-21 22:32:05">2018/05/21</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/21/236/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="超参调节方法">超参调节方法</span>
+            <span class="post-date" title="2018-05-21 19:31:51">2018/05/21</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/21/221/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="学习率衰减">学习率衰减</span>
+            <span class="post-date" title="2018-05-21 19:31:36">2018/05/21</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/21/183/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="指数加权平均">指数加权平均</span>
+            <span class="post-date" title="2018-05-21 15:32:15">2018/05/21</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/21/232/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="防止过拟合的方式">防止过拟合的方式</span>
+            <span class="post-date" title="2018-05-21 14:01:09">2018/05/21</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/21/180/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="神经网络中的方差和偏差">神经网络中的方差和偏差</span>
+            <span class="post-date" title="2018-05-21 13:15:10">2018/05/21</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/21/29/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="神经网络参数的初始化问题">神经网络参数的初始化问题</span>
+            <span class="post-date" title="2018-05-21 11:14:53">2018/05/21</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/20/189/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="岭回归">岭回归</span>
+            <span class="post-date" title="2018-05-20 12:04:22">2018/05/20</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/19/63/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="单层感知机不能表示异或逻辑的证明过程">单层感知机不能表示异或逻辑的证明过程</span>
+            <span class="post-date" title="2018-05-19 20:56:08">2018/05/19</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/19/181/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="对常见的优化算法的总结">对常见的优化算法的总结</span>
+            <span class="post-date" title="2018-05-19 15:55:32">2018/05/19</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/19/157/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="对常见的激活函数的总结">对常见的激活函数的总结</span>
+            <span class="post-date" title="2018-05-19 15:55:12">2018/05/19</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/19/210/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="导数、偏导数、方向导数、梯度">导数、偏导数、方向导数、梯度</span>
+            <span class="post-date" title="2018-05-19 15:48:21">2018/05/19</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/19/138/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="线性回归（二）">线性回归（二）</span>
+            <span class="post-date" title="2018-05-19 15:47:24">2018/05/19</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/19/123/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="混淆矩阵、查准率、查全率、F-Score">混淆矩阵、查准率、查全率、F-Score</span>
+            <span class="post-date" title="2018-05-19 15:08:10">2018/05/19</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/18/133/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="线性判别分析">线性判别分析</span>
+            <span class="post-date" title="2018-05-18 21:28:26">2018/05/18</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/18/247/" data-tag="机器学习,NLP" data-author="">
+            <span class="post-title" title="BM25算法实现">BM25算法实现</span>
+            <span class="post-date" title="2018-05-18 13:29:38">2018/05/18</span>
+        </a>
+        
+        <a class="安全 " href="/2018/05/18/204/" data-tag="安全" data-author="">
+            <span class="post-title" title="Python反序列化漏洞">Python反序列化漏洞</span>
+            <span class="post-date" title="2018-05-18 10:35:21">2018/05/18</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/17/3/" data-tag="机器学习,NLP" data-author="">
+            <span class="post-title" title="LSI算法实现篇">LSI算法实现篇</span>
+            <span class="post-date" title="2018-05-17 23:34:46">2018/05/17</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/17/217/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="特征值分解和奇异值分解">特征值分解和奇异值分解</span>
+            <span class="post-date" title="2018-05-17 19:50:56">2018/05/17</span>
+        </a>
+        
+        <a class="编程 " href="/2018/05/17/8/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：常见函数的实现">CPP：常见函数的实现</span>
+            <span class="post-date" title="2018-05-17 09:05:32">2018/05/17</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/17/239/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="文本预处理方式自查文档">文本预处理方式自查文档</span>
+            <span class="post-date" title="2018-05-17 00:11:15">2018/05/17</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/17/37/" data-tag="机器学习,NLP" data-author="">
+            <span class="post-title" title="BM25算法">BM25算法</span>
+            <span class="post-date" title="2018-05-17 00:07:43">2018/05/17</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/17/178/" data-tag="机器学习,NLP" data-author="">
+            <span class="post-title" title="LSI算法理论篇">LSI算法理论篇</span>
+            <span class="post-date" title="2018-05-17 00:06:46">2018/05/17</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/17/193/" data-tag="机器学习,NLP" data-author="">
+            <span class="post-title" title="词袋模型">词袋模型</span>
+            <span class="post-date" title="2018-05-17 00:06:10">2018/05/17</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/17/182/" data-tag="机器学习,NLP" data-author="">
+            <span class="post-title" title="TF-IDF">TF-IDF</span>
+            <span class="post-date" title="2018-05-17 00:05:39">2018/05/17</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/16/51/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="高斯判别分析">高斯判别分析</span>
+            <span class="post-date" title="2018-05-16 11:25:54">2018/05/16</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/16/129/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="概率论与数理统计：常见概率分布">概率论与数理统计：常见概率分布</span>
+            <span class="post-date" title="2018-05-16 10:22:28">2018/05/16</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/15/50/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="高斯混合模型">高斯混合模型</span>
+            <span class="post-date" title="2018-05-15 23:52:50">2018/05/15</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/15/246/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="朴素贝叶斯算法">朴素贝叶斯算法</span>
+            <span class="post-date" title="2018-05-15 23:46:53">2018/05/15</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/15/100/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="k-means算法">k-means算法</span>
+            <span class="post-date" title="2018-05-15 23:45:15">2018/05/15</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/15/16/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="EM算法">EM算法</span>
+            <span class="post-date" title="2018-05-15 23:44:09">2018/05/15</span>
+        </a>
+        
+        <a class="安全 " href="/2018/05/15/65/" data-tag="安全,工具" data-author="">
+            <span class="post-title" title="gdb自查手册">gdb自查手册</span>
+            <span class="post-date" title="2018-05-15 09:41:39">2018/05/15</span>
+        </a>
+        
+        <a class="安全 " href="/2018/05/15/191/" data-tag="安全" data-author="">
+            <span class="post-title" title="格式化字符串漏洞">格式化字符串漏洞</span>
+            <span class="post-date" title="2018-05-15 09:40:36">2018/05/15</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/104/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：滑动窗口的最大值">剑指Offer：滑动窗口的最大值</span>
+            <span class="post-date" title="2018-05-14 23:50:00">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/108/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：左旋转字符串">剑指Offer：左旋转字符串</span>
+            <span class="post-date" title="2018-05-14 22:59:20">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/255/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：翻转字符串">剑指Offer：翻转字符串</span>
+            <span class="post-date" title="2018-05-14 22:37:21">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/160/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：和为s的连续正数序列">剑指Offer：和为s的连续正数序列</span>
+            <span class="post-date" title="2018-05-14 21:33:31">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/88/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：和为s的数字">剑指Offer：和为s的数字</span>
+            <span class="post-date" title="2018-05-14 20:42:17">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/82/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：数组中只出现一次的两个数字">剑指Offer：数组中只出现一次的两个数字</span>
+            <span class="post-date" title="2018-05-14 18:23:40">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/126/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：平衡二叉树">剑指Offer：平衡二叉树</span>
+            <span class="post-date" title="2018-05-14 17:39:52">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/107/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二叉树的深度">剑指Offer：二叉树的深度</span>
+            <span class="post-date" title="2018-05-14 17:07:51">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/177/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二叉搜索树中的第K大节点">剑指Offer：二叉搜索树中的第K大节点</span>
+            <span class="post-date" title="2018-05-14 16:54:47">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/58/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：0到n-1中缺失的数字">剑指Offer：0到n-1中缺失的数字</span>
+            <span class="post-date" title="2018-05-14 16:13:41">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/202/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：在排序数组中查找数字">剑指Offer：在排序数组中查找数字</span>
+            <span class="post-date" title="2018-05-14 15:57:33">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/31/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：两个链表的第一个公共节点">剑指Offer：两个链表的第一个公共节点</span>
+            <span class="post-date" title="2018-05-14 15:26:37">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/234/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：连续子数组的最大和">剑指Offer：连续子数组的最大和</span>
+            <span class="post-date" title="2018-05-14 14:32:31">2018/05/14</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/14/132/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：数据流中的中位数">剑指Offer：数据流中的中位数</span>
+            <span class="post-date" title="2018-05-14 14:04:47">2018/05/14</span>
+        </a>
+        
+        <a class="" href="/2018/05/14/57/" data-tag="" data-author="">
+            <span class="post-title" title="格式化字符串漏洞总结">格式化字符串漏洞总结</span>
+            <span class="post-date" title="2018-05-14 11:00:53">2018/05/14</span>
+        </a>
+        
+        <a class="编程 " href="/2018/05/13/227/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：vector容器的常用API">CPP：vector容器的常用API</span>
+            <span class="post-date" title="2018-05-13 11:29:32">2018/05/13</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/13/163/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="逻辑回归">逻辑回归</span>
+            <span class="post-date" title="2018-05-13 11:27:46">2018/05/13</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/13/228/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="局部加权线性回归">局部加权线性回归</span>
+            <span class="post-date" title="2018-05-13 10:21:46">2018/05/13</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/13/186/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="线性回归（一）">线性回归（一）</span>
+            <span class="post-date" title="2018-05-13 08:55:28">2018/05/13</span>
+        </a>
+        
+        <a class="技术 " href="/2018/05/12/101/" data-tag="计算机网络" data-author="">
+            <span class="post-title" title="计算机网络：基础知识整理">计算机网络：基础知识整理</span>
+            <span class="post-date" title="2018-05-12 17:11:41">2018/05/12</span>
+        </a>
+        
+        <a class="算法 " href="/2018/05/12/112/" data-tag="数据结构与算法" data-author="">
+            <span class="post-title" title="数据结构与算法：LRU算法">数据结构与算法：LRU算法</span>
+            <span class="post-date" title="2018-05-12 10:01:34">2018/05/12</span>
+        </a>
+        
+        <a class="算法 " href="/2018/05/12/91/" data-tag="数据结构与算法" data-author="">
+            <span class="post-title" title="数据结构与算法：最大堆">数据结构与算法：最大堆</span>
+            <span class="post-date" title="2018-05-12 09:09:06">2018/05/12</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/11/35/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：最小的K个数">剑指Offer：最小的K个数</span>
+            <span class="post-date" title="2018-05-11 23:20:02">2018/05/11</span>
+        </a>
+        
+        <a class="编程 " href="/2018/05/11/225/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：排序算法总结">CPP：排序算法总结</span>
+            <span class="post-date" title="2018-05-11 17:56:20">2018/05/11</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/11/231/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：数组中出现次数超过一半的数字">剑指Offer：数组中出现次数超过一半的数字</span>
+            <span class="post-date" title="2018-05-11 16:31:52">2018/05/11</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/11/118/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：八皇后问题">剑指Offer：八皇后问题</span>
+            <span class="post-date" title="2018-05-11 15:00:28">2018/05/11</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/11/66/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：字符串的组合">剑指Offer：字符串的组合</span>
+            <span class="post-date" title="2018-05-11 14:39:32">2018/05/11</span>
+        </a>
+        
+        <a class="编程 " href="/2018/05/11/161/" data-tag="编程,C++" data-author="">
+            <span class="post-title" title="CPP：main函数、头文件">CPP：main函数、头文件</span>
+            <span class="post-date" title="2018-05-11 13:31:58">2018/05/11</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/11/147/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：字符串的排列">剑指Offer：字符串的排列</span>
+            <span class="post-date" title="2018-05-11 12:46:41">2018/05/11</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/11/56/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二叉搜索树与双向链表">剑指Offer：二叉搜索树与双向链表</span>
+            <span class="post-date" title="2018-05-11 09:23:10">2018/05/11</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/10/94/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：复杂链表的复制">剑指Offer：复杂链表的复制</span>
+            <span class="post-date" title="2018-05-10 23:06:22">2018/05/10</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/10/214/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二叉树中和为某一值的路径">剑指Offer：二叉树中和为某一值的路径</span>
+            <span class="post-date" title="2018-05-10 22:07:35">2018/05/10</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/09/173/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二叉搜索树的后序遍历序列">剑指Offer：二叉搜索树的后序遍历序列</span>
+            <span class="post-date" title="2018-05-09 16:15:30">2018/05/09</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/09/242/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：之字形打印二叉树">剑指Offer：之字形打印二叉树</span>
+            <span class="post-date" title="2018-05-09 14:42:32">2018/05/09</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/09/69/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：分行从上到下打印二叉树">剑指Offer：分行从上到下打印二叉树</span>
+            <span class="post-date" title="2018-05-09 12:36:45">2018/05/09</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/09/201/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：不分行从上到下打印二叉树">剑指Offer：不分行从上到下打印二叉树</span>
+            <span class="post-date" title="2018-05-09 11:19:24">2018/05/09</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/09/67/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：栈的压入、弹出序列">剑指Offer：栈的压入、弹出序列</span>
+            <span class="post-date" title="2018-05-09 10:58:00">2018/05/09</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/09/92/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：包含min函数的栈">剑指Offer：包含min函数的栈</span>
+            <span class="post-date" title="2018-05-09 10:24:28">2018/05/09</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/09/105/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：顺时针打印矩阵">剑指Offer：顺时针打印矩阵</span>
+            <span class="post-date" title="2018-05-09 09:58:02">2018/05/09</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/137/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：对称的二叉树">剑指Offer：对称的二叉树</span>
+            <span class="post-date" title="2018-05-08 23:41:03">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/256/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二叉树的镜像">剑指Offer：二叉树的镜像</span>
+            <span class="post-date" title="2018-05-08 22:59:07">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/64/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：树的子结构">剑指Offer：树的子结构</span>
+            <span class="post-date" title="2018-05-08 22:33:03">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/205/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：合并两个排序的链表">剑指Offer：合并两个排序的链表</span>
+            <span class="post-date" title="2018-05-08 21:36:02">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/54/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：反转链表">剑指Offer：反转链表</span>
+            <span class="post-date" title="2018-05-08 21:23:13">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/62/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：链表中环的入口节点">剑指Offer：链表中环的入口节点</span>
+            <span class="post-date" title="2018-05-08 20:45:16">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/146/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：链表中倒数第K个节点">剑指Offer：链表中倒数第K个节点</span>
+            <span class="post-date" title="2018-05-08 19:23:01">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/190/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：调整数组顺序使奇数位于偶数前面">剑指Offer：调整数组顺序使奇数位于偶数前面</span>
+            <span class="post-date" title="2018-05-08 19:01:42">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/169/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：表示数值的字符串">剑指Offer：表示数值的字符串</span>
+            <span class="post-date" title="2018-05-08 18:11:30">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/251/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：正则表达式匹配">剑指Offer：正则表达式匹配</span>
+            <span class="post-date" title="2018-05-08 17:15:15">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/116/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：删除列表中的重复节点">剑指Offer：删除列表中的重复节点</span>
+            <span class="post-date" title="2018-05-08 16:25:39">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/08/73/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：删除列表中的节点">剑指Offer：删除列表中的节点</span>
+            <span class="post-date" title="2018-05-08 15:04:25">2018/05/08</span>
+        </a>
+        
+        <a class="安全 " href="/2018/05/08/26/" data-tag="安全" data-author="">
+            <span class="post-title" title="Java反序列化漏洞">Java反序列化漏洞</span>
+            <span class="post-date" title="2018-05-08 09:14:20">2018/05/08</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/08/220/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="主成分分析（PCA）">主成分分析（PCA）</span>
+            <span class="post-date" title="2018-05-08 00:14:41">2018/05/08</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/155/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：数值的整数次方">剑指Offer：数值的整数次方</span>
+            <span class="post-date" title="2018-05-07 23:04:53">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/98/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二进制中1的个数">剑指Offer：二进制中1的个数</span>
+            <span class="post-date" title="2018-05-07 21:15:15">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/162/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：剪绳子">剑指Offer：剪绳子</span>
+            <span class="post-date" title="2018-05-07 20:33:46">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/68/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：机器人的运动范围">剑指Offer：机器人的运动范围</span>
+            <span class="post-date" title="2018-05-07 19:03:34">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/144/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：矩阵中的路径">剑指Offer：矩阵中的路径</span>
+            <span class="post-date" title="2018-05-07 18:38:37">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/39/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：矩形覆盖">剑指Offer：矩形覆盖</span>
+            <span class="post-date" title="2018-05-07 18:08:17">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/230/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：旋转数组的最小数字">剑指Offer：旋转数组的最小数字</span>
+            <span class="post-date" title="2018-05-07 17:51:19">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/114/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：青蛙跳台阶问题">剑指Offer：青蛙跳台阶问题</span>
+            <span class="post-date" title="2018-05-07 16:59:58">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/18/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：斐波那契数列">剑指Offer：斐波那契数列</span>
+            <span class="post-date" title="2018-05-07 16:44:20">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/151/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：用两个栈实现队列">剑指Offer：用两个栈实现队列</span>
+            <span class="post-date" title="2018-05-07 16:08:54">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/215/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二叉树的下一个节点">剑指Offer：二叉树的下一个节点</span>
+            <span class="post-date" title="2018-05-07 15:36:57">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/48/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：重建二叉树">剑指Offer：重建二叉树</span>
+            <span class="post-date" title="2018-05-07 14:58:05">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/172/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：从尾到头打印链表">剑指Offer：从尾到头打印链表</span>
+            <span class="post-date" title="2018-05-07 13:27:17">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/235/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：替换空格">剑指Offer：替换空格</span>
+            <span class="post-date" title="2018-05-07 13:11:45">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/110/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：二维数组中的查找">剑指Offer：二维数组中的查找</span>
+            <span class="post-date" title="2018-05-07 12:10:52">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/199/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：不修改数组找出重复的数字">剑指Offer：不修改数组找出重复的数字</span>
+            <span class="post-date" title="2018-05-07 11:06:06">2018/05/07</span>
+        </a>
+        
+        <a class="剑指Offer " href="/2018/05/07/85/" data-tag="数据结构与算法,刷题" data-author="">
+            <span class="post-title" title="剑指Offer：数组中的重复数字">剑指Offer：数组中的重复数字</span>
+            <span class="post-date" title="2018-05-07 10:31:50">2018/05/07</span>
+        </a>
+        
+        <a class="" href="/2018/05/06/233/" data-tag="" data-author="">
+            <span class="post-title" title="隐马尔可夫模型（一）">隐马尔可夫模型（一）</span>
+            <span class="post-date" title="2018-05-06 22:22:09">2018/05/06</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/06/244/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="集成学习（三）：随机森林">集成学习（三）：随机森林</span>
+            <span class="post-date" title="2018-05-06 16:03:26">2018/05/06</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/06/156/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="集成学习（二）：Adaboost">集成学习（二）：Adaboost</span>
+            <span class="post-date" title="2018-05-06 13:07:38">2018/05/06</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/05/103/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="集成学习（一）">集成学习（一）</span>
+            <span class="post-date" title="2018-05-05 18:09:25">2018/05/05</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/05/136/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="决策树算法（四）：CART">决策树算法（四）：CART</span>
+            <span class="post-date" title="2018-05-05 15:22:42">2018/05/05</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/04/130/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="决策树算法（三）：C4.5">决策树算法（三）：C4.5</span>
+            <span class="post-date" title="2018-05-04 23:45:21">2018/05/04</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/04/134/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="决策树算法（二）：ID3">决策树算法（二）：ID3</span>
+            <span class="post-date" title="2018-05-04 20:56:03">2018/05/04</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/04/99/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="决策树算法（一）">决策树算法（一）</span>
+            <span class="post-date" title="2018-05-04 19:18:07">2018/05/04</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/04/197/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="KNN算法（二）：kd-tree">KNN算法（二）：kd-tree</span>
+            <span class="post-date" title="2018-05-04 16:00:42">2018/05/04</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/04/174/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="KNN算法（一）">KNN算法（一）</span>
+            <span class="post-date" title="2018-05-04 14:51:11">2018/05/04</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/04/238/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="感知机（三）">感知机（三）</span>
+            <span class="post-date" title="2018-05-04 13:26:33">2018/05/04</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/04/207/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="感知机（二）">感知机（二）</span>
+            <span class="post-date" title="2018-05-04 12:09:31">2018/05/04</span>
+        </a>
+        
+        <a class="机器学习 " href="/2018/05/04/187/" data-tag="机器学习" data-author="">
+            <span class="post-title" title="感知机（一）">感知机（一）</span>
+            <span class="post-date" title="2018-05-04 09:46:26">2018/05/04</span>
+        </a>
+        
+    </nav>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-3" class="article article-type-post" itemscope="" itemprop="blogPost">
+    
+        <h1 class="article-title">LSI算法实现篇</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+            <a href="javascript:" data-rel="机器学习">机器学习</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color5">机器学习</a>
+            
+            <a href="javascript:" class="color4">NLP</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2019-06-07 11:50:53">2018-05-17 23:34</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1,073</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序执行结果"><span class="toc-text">程序执行结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据集下载"><span class="toc-text">数据集下载</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这里主要是用 gensim 这个工具包实现了 LSI 算法，用 LSI 算法做文本相似度分析。程序的执行流程大致如下：</p>
+<ol>
+<li>分词</li>
+<li>过滤（只保留了汉字和英文，去掉了所有的空白字符和标点，英文大写转小写，注意这里没有去停用词）</li>
+<li>制作词典</li>
+<li>得到词袋模型</li>
+<li>计算每个文本的 tf-idf 向量</li>
+<li>基于所有文本的 tf-idf 向量执行 LSI 算法得到所有文本的 LSI 向量（假设主题数为 200）</li>
+<li>基于 LSI 向量进行文本相似度的计算</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code># encoding: utf-8
+
+from gensim import corpora, models, similarities, logging
+import jieba
+import re
+import pandas as pd
+
+# 分词
+words = []
+with open(&#39;./train_data.csv&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;) as f:
+    next(f)
+    for line in f:
+        label, content = line.split(&#39;,&#39;, 1)
+        content = &#39; &#39;.join(list(jieba.cut(content)))
+        words.append((label, content))
+
+# 过滤
+patterns = [re.compile(u&#39;[^\u4E00-\u9FA5A-Za-z]&#39;),  # 匹配汉字和英文
+            re.compile(&#39;\s&#39;),  # 匹配所有的空格字符
+            re.compile(&#39; {2,}&#39;)]  # 匹配 2 个以上空格（包含 2 个）
+
+labels = []
+contents = []
+for label, content in words:
+    for pattern in patterns:  # 依据正则表达式过滤
+        content = re.sub(pattern, &#39; &#39;, content)
+    content = content.lower()
+    content = content.strip()
+    labels.append(label)
+    contents.append(content)
+
+# 转为 DataFrame
+train_data = {
+    &#39;label&#39;: labels,
+    &#39;content&#39;: contents
+}
+
+train_df = pd.DataFrame(train_data)
+train_df[&#39;content&#39;] = train_df[&#39;content&#39;].apply(lambda x: x.split())
+
+# check
+# print(train_df.shape)
+# print(train_df.head(5))
+
+# 得到词典，词袋模型，tfidf 模型，每个文本的 tfidf 向量，lsi 模型，每个文本对应的 lsi 向量，索引
+# logging.basicConfig(format=&#39;%(asctime)s : %(levelname)s : %(message)s&#39;, level=logging.INFO)  # gensim 日志
+dct = corpora.Dictionary(train_df[&#39;content&#39;])
+bow = [dct.doc2bow(content) for content in train_df[&#39;content&#39;]]
+tfidf_model = models.TfidfModel(bow)
+tfidf_vecs = tfidf_model[bow]
+lsi_model = models.LsiModel(tfidf_vecs, id2word=dct, num_topics=200)
+lsi_vecs = lsi_model[tfidf_vecs]
+indexes = similarities.SparseMatrixSimilarity(lsi_vecs, num_features=200)
+
+# check
+querys = [
+    &#39;日本 制造业 pmi 终值 初值&#39;,
+    &#39;外媒 新加坡 金管局 局长 警告 称 不要 低估 全球 经济 风险&#39;,
+    &#39;连续 跌停 次新股 能科 股份 资金 翘开 跌停板&#39;,
+    &#39;德拉 基 充足 货币政策 宽松&#39;,
+    &#39;英镑 美元 刷新 低 支撑位&#39;
+]
+
+for query in querys:
+    sims = indexes[lsi_model[tfidf_model[dct.doc2bow(query.split(&#39; &#39;))]]]
+    sims = sorted(enumerate(sims), key=lambda item: -item[1])
+    print(query)
+    for index, sim in sims[:3]:
+        print(&#39; &#39;.join(train_df[&#39;content&#39;][index]), &#39;, 相似度为: &#39;, sim)
+    print()
+</code></pre><h2 id="程序执行结果"><a href="#程序执行结果" class="headerlink" title="程序执行结果"></a>程序执行结果</h2><pre><code>日本 制造业 pmi 终值 初值
+日本 月 制造业 pmi 终值 初值 , 相似度为:  0.99582595
+markit 经济学家 rob dobson 英国 制造业 pmi 对 制造业 状况 的 反映 好坏 参半 , 相似度为:  0.84928674
+法国 月 制造业 pmi 初值 预期 前值 , 相似度为:  0.7943848
+
+外媒 新加坡 金管局 局长 警告 称 不要 低估 全球 经济 风险
+据 外媒 新加坡 金管局 局长 警告 称 不要 低估 全球 经济 风险 , 相似度为:  0.98838115
+世界 银行行长 金墉 全球 经济 处于 前所未见 的 领域 政府 在 财政政策 的 杠杆 已经 被 推到 极致 , 相似度为:  0.38092345
+oecd 秘书长 全球 经济 正 非常 缓慢 地 改善 , 相似度为:  0.373093
+
+连续 跌停 次新股 能科 股份 资金 翘开 跌停板
+连续 六个 跌停 的 次新股 能科 股份 被 资金 翘开 跌停板 , 相似度为:  0.97551125
+顺威 股份 闪崩 跌停 , 相似度为:  0.7192299
+次新股 逆势 拉升 邦 宝 益智 读者 传媒 博敏 电子 等 开板 次新股 均 从 大跌 到 强势 涨停 道森 股份 凯龙 股份 等 连续 暴跌 后 拉升 , 相似度为:  0.50892377
+
+德拉 基 充足 货币政策 宽松
+德拉 基 充足 的 货币政策 宽松 仍 是 必要 的 , 相似度为:  0.9683843
+德拉 基 记者会 欧洲央行 行长 德拉 基 没有 讨论 要 在 指引 中 删掉 qe 通胀 的 关联 , 相似度为:  0.87764835
+德拉 基 记者会 欧洲央行 行长 德拉 基 欧洲央行 行长 德拉 基 中期 核心 通胀 将 逐步 上扬 , 相似度为:  0.8646995
+
+英镑 美元 刷新 低 支撑位
+英镑 美元 刷新 日低 至 支撑位 在 , 相似度为:  0.89580685
+英镑 兑 美元 持续 走高 刷新 逾 一周 高点 , 相似度为:  0.66900176
+英镑 美元 涨幅 扩大 至 逾 触及 刷新 日高 , 相似度为:  0.6406657
+</code></pre><h2 id="数据集下载"><a href="#数据集下载" class="headerlink" title="数据集下载"></a>数据集下载</h2><pre><code>注意事项：数据仅供个人学习使用，请不要用于商业用途。
+[百度网盘，密码：bd8k](https://pan.baidu.com/s/17U8Y8pl9Qwce6LyAt3yktg)，
+</code></pre>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达，可以在文章下方的评论区进行评论，也可以邮件至 765422195@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span>文章标题:</span>LSI算法实现篇</p>
+    <p><span>文章字数:</span><span class="post-count">1,073</span></p>
+    <p><span>本文作者:</span><a href="javascript:void(0)" title="ylhao">ylhao</a></p>
+    <p><span>发布时间:</span>2018-05-17, 23:34:46</p>
+    <p><span>最后更新:</span>2019-06-07, 11:50:53</p>
+    <span>原始链接:</span><a class="post-url" href="/2018/05/17/3/" title="LSI算法实现篇">https://ylhao.github.io/2018/05/17/3/</a>
+    <p>
+        <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="/css/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: 'ylhao.github.io',
+            owner: 'ylhao',
+            admin: ['ylhao'],
+            id: location.pathname,
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js" value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+
+    
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2018 衣龙浩</p>
+<p class="footer-entry">Buit with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>感谢大家的支持，我会做的更好！</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js"></script>
+<script>
+    var img_resize = 'photoSwipe';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#机器学习','#计算机网络','#数据结构与算法','#刷题','#Linux','#编程','#Hadoop','#C++','#字符串处理','#哈希表','#Python','#Git','#SSH','#JavaScript','#NLP','#安全','#GCC','#scikit-learn','#Java','#基本实现','#防火墙','#TensorFlow','#博客管理','#LSTM','#SQL','#tensorflow','#Tomcat','#工具','#动态规划','#make','#makefile',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1;
+            var $numbering = $('<ul/>').addClass('pre-numbering').attr("unselectable","on");
+            $(this).addClass('has-numbering')
+                    .parent()
+                    .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 2px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 2px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</html>

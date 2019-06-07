@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>衣介书生</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://ylhao.github.io/"/>
+  <updated>2019-06-07T03:50:53.758Z</updated>
+  <id>https://ylhao.github.io/</id>
+  
+  <author>
+    <name>ylhao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://ylhao.github.io/2019/06/07/113/"/>
+    <id>https://ylhao.github.io/2019/06/07/113/</id>
+    <published>2019-06-07T03:50:53.758Z</published>
+    <updated>2019-06-07T03:50:53.758Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 压缩 解压缩</title>
+    <link href="https://ylhao.github.io/2019/05/18/272/"/>
+    <id>https://ylhao.github.io/2019/05/18/272/</id>
+    <published>2019-05-18T01:41:52.000Z</published>
+    <updated>2019-06-07T03:50:53.806Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><p>基础参数选项（包相关）：</p><pre><code>-c           #创建打包文件-f           #指定目标文件-t           #查看打包文件的内容-v           #显示详细过程-p             #使打包的文件保持源文件的属性--help       #帮助文档</code></pre><p>压缩、解压缩相关参数：</p><pre><code>-r           #向压缩文件的末尾追加文件-u           #更新原压缩包中的文件-z           #使用gzip格式压缩/解压缩-j           #使用bzip2格式压缩/解压缩-Z           #使用compress格式压缩/解压缩-O           #将文件解压到标准输出</code></pre><p>样例：</p><pre><code>//打包文件：将所有的jpg及txt结尾的文件打包到test.tar的文件中tar -cf test.tar *jpg *txt //向包中追加文件：将所有的以gif结尾的文件追加到test.tar中tar -rf test.tar *gif //更新包中的某个特定文件：更新test.tar中的halen.jpg文件 tar -uf test.tar halen.jpg//查看包中的内容：tar -tf test.tar//取出包中的文件：tar -xf test.tar//打包并以gzip格式压缩：压缩所有以txt结尾的文件tar -czf test.tar.gz *txt//解压以gzip压缩的文件 ：tar -xzf test.tar.gz//打包并以bzip2格式压缩 ：压缩所有以txt结尾的文件tar -cjf test.tar.gz *txt//解压以bizp压缩的文件 ：tar -xjf test.tar.gz//打包并以compress格式压缩 ：压缩所有以txt结尾的文件tar -cZf test.tar.gz *txt//解压以compress压缩的文件 ：tar -xZf test.tar.gz</code></pre><h2 id="rar"><a href="#rar" class="headerlink" title="rar"></a>rar</h2><pre><code>//以rar格式压缩文件：rar a test.rar *.txt//解压以rar格式压缩文件：unzip e test.zip *.txt</code></pre><h2 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h2><pre><code>//以zip格式压缩文件：zip test.zip *.txt//解压以zip格式压缩文件：unzip test.zip *.txt</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="[https://blog.csdn.net/Neu_Halen/article/details/90298493](https://blog.csdn.net/Neu_Halen/article/details/90298493">Linux中tar的使用详解：打包、压缩、解压</a><br>)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;tar&quot;&gt;&lt;a href=&quot;#tar&quot; class=&quot;headerlink&quot; title=&quot;tar&quot;&gt;&lt;/a&gt;tar&lt;/h2&gt;&lt;p&gt;基础参数选项（包相关）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-c           #创建打包文件
+-f           #指定目
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://ylhao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Linux" scheme="https://ylhao.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PageRank算法的核心思想</title>
+    <link href="https://ylhao.github.io/2019/05/17/271/"/>
+    <id>https://ylhao.github.io/2019/05/17/271/</id>
+    <published>2019-05-17T15:50:13.000Z</published>
+    <updated>2019-06-07T03:50:53.806Z</updated>
+    
+    <content type="html"><![CDATA[<p>网页的排名主要取决于：</p><ol><li>网页的质量</li><li>网页与查询的相关性</li></ol><p>PageRank算法的作用是度量网页的质量。真正找到计算网页自身质量的完美的数据模型的是Google的创始人拉里$\cdot$佩奇和谢尔盖$\cdot$布林。</p><p>PageRank的核心思想：</p><ul><li>在互联网上如果一个网页被很多其他网页所链接，说明他受到普遍的承认和信赖，他的排名就高（PageRank值大）。</li><li>网页排名越高（PageRank值越大），网页贡献的链接的权重越大。</li></ul><p>从PageRank核心思想出发，可以做以下假设：</p><ul><li>用$S(v_i)$定义$v_i$这个页面的PageRank值。</li><li>用$\epsilon$表示所有其他可以链接到$v_i$这个页面的网页集合。</li><li>那么便可以用$(j,i)$来定义集合中的一个（由页面$v_j$链接到页面$v_i$)。</li></ul><p>一个页面的PageRank值可以定义为：<br>$$<br>S(v_i) = \sum_{(j, i)\in\epsilon}S(v_j)<br>$$</p><p><img src="https://upload-images.jianshu.io/upload_images/9966001-797098cb4cbf1dc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="示例"></p><p>如上图所示，A,B,C,D表示4个网页，那么网页的PageRank值可以定义为：<br>$$<br>S(A) = S(B)+S(C)<br>$$<br>可以看到B、C两点都外链了2个节点，那么对于B,C来说，是可以选择不去A的而去另外一个链接的，所以外链进入A是有一定概率的，更改PageRank的定义：<br>$$<br>S(v_i) = \sum_{(j, i)\in\epsilon}\frac{S(v_j)}{Out(v_j)}<br>$$<br>其中$Out(v_j)表示网页v_j中的外链总数量$。</p><h2 id="PageRank算法的计算过程"><a href="#PageRank算法的计算过程" class="headerlink" title="PageRank算法的计算过程"></a>PageRank算法的计算过程</h2><p>计算一个网页的PageRank值需要用到网页本身的PageRank值，这是一个“先有鸡还是先有蛋”的问题。布林解决了这个问题。首先布林将这个问题变为了一个二维矩阵相乘的问题，并用迭代的方法解决了这个问题。</p><ul><li>首先假设所有网页的排名（PageRank值）相同。</li><li>根据这个初始值算出各个网页的第一次排名（PageRank值）。</li><li>然后再根据第一次排名算出第二次排名（PageRank值）。</li></ul><p>假设：</p><ul><li>$S(v) = [S(v_1),S(v_2),S(v_3),…,S(v_n)]^T$，即$S(v)$为一个n维的PageRank值向量。</li><li>A为一个矩阵且：<br>$$ A_{ji}=\left{<br>\begin{aligned}<br>\frac{1}{out(v_j)},\qquad  if (j,i) \in \epsilon \<br>0,\qquad if (j,i) \notin \epsilon\<br>\end{aligned}<br>\right.<br>$$</li></ul><p>如果给$S(v)$一个初始值$S(v)^0$，便可以通过下式不断迭代求解：<br>$$<br>S(v)^k = A^T \cdot S(v)^{k-1}<br>$$</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="[https://blog.csdn.net/qq_41664845/article/details/82869596](https://blog.csdn.net/qq_41664845/article/details/82869596">【TextRank】关键词提取 算法原理 公式推导 源码分析</a><br>)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;网页的排名主要取决于：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;网页的质量&lt;/li&gt;
+&lt;li&gt;网页与查询的相关性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;PageRank算法的作用是度量网页的质量。真正找到计算网页自身质量的完美的数据模型的是Google的创始人拉里$\cdot$佩奇和谢尔盖$\cd
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL中的utf8mb4</title>
+    <link href="https://ylhao.github.io/2019/05/16/270/"/>
+    <id>https://ylhao.github.io/2019/05/16/270/</id>
+    <published>2019-05-16T15:45:12.000Z</published>
+    <updated>2019-06-07T03:50:53.806Z</updated>
+    
+    <content type="html"><![CDATA[<p>在mysql中：</p><ul><li>MySQL的“utf8mb4”是真正的“UTF-8”，长度是4个字节。</li><li>MySQL的“utf8”是mysql自己的一种“专属的编码”，它的最大字符长度为 3 字节，只是“UTF-8”标准的一个子集。<br>所以Emoji 表情（Emoji 是一种特殊的 Unicode 编码，常见于 ios 和 android 手机上），和一些不常用的汉字，存储就会报错。</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="[https://my.oschina.net/u/2601303/blog/3050024](https://my.oschina.net/u/2601303/blog/3050024">不要在MySQL中使用utf8，改用utf8mb4</a><br>)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在mysql中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MySQL的“utf8mb4”是真正的“UTF-8”，长度是4个字节。&lt;/li&gt;
+&lt;li&gt;MySQL的“utf8”是mysql自己的一种“专属的编码”，它的最大字符长度为 3 字节，只是“UTF-8”标准的一个子集。&lt;br&gt;所以E
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://ylhao.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="编程" scheme="https://ylhao.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="SQL" scheme="https://ylhao.github.io/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FM和FFM算法</title>
+    <link href="https://ylhao.github.io/2019/05/15/269/"/>
+    <id>https://ylhao.github.io/2019/05/15/269/</id>
+    <published>2019-05-15T09:09:10.000Z</published>
+    <updated>2019-06-07T03:50:53.805Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="FM-Factorization-Machines"><a href="#FM-Factorization-Machines" class="headerlink" title="FM(Factorization Machines)"></a>FM(Factorization Machines)</h2><p>FM主要目标是：解决数据稀疏的情况下，特征怎样组合的问题。</p><p>FM一共有3个优点：</p><ul><li>可以在非常稀疏的数据中进行合理的参数估计</li><li>FM模型的时间复杂度是线性的</li><li>FM是一个通用模型，它可以用于任何特征为实值的情况</li></ul><p>在一般的线性模型中，各个特征相互独立，不考虑特征与特征之间的相互关系。但实际上，大量的特征之间是有关联的。 一般的线性模型为：</p><p>$$y = w_0 + \Sigma_{i=1}^{n}w_{i} x_{i}$$</p><p>为了表述特征间的相关性，可以采用多项式模型。在多项式模型中，特征$x_i$与$x_j$的组合用$x_{i} x_{j}$表示。为了简单起见，我们讨论二阶多项式模型。</p><p>$$y = w_0 + \Sigma_{i=1}^{n}w_{i} x_{i} + \Sigma_{i=1}^{n}\Sigma_{j=i+1}^{n}w_{ij}x_{i}x_{j}$$</p><p>该多项是模型与线性模型相比，多了特征组合的部分，特征组合部分的参数有$\frac{n(n-1)}{2}$个。如果特征非常稀疏且维度很高的话，时间复杂度将大大增加。 </p><p>对每一个特征，引入辅助向量lantent vector $V_{i}=[v_{i1},v_{i2},…,v_{ik}]^T$, 模型修改如下：</p><p>$$y = w_0 + \Sigma_{i=1}^{n}w_{i} x_{i} + \Sigma_{i=1}^{n}\Sigma_{j=i+1}^{n}&lt;V_i, V_j&gt;x_{i}x_{j}$$</p><p>其中k是超参数，即lantent vector的维度，一般取30或40，也可以取其他数，具体情况具体分析。使用$&lt;V_i, V_j&gt;$取代$w_{ij}$能够更好的学习到特征之间的相关性，并且能够减少模型中的参数数量，FM的二次项参数数量为nk。计算上式的时间复杂度为$O(kn^2)$，但是可以通过化简将时间复杂度降为$O(kn)$。</p><h2 id="FFM（Field-aware-Factorization-Machines）"><a href="#FFM（Field-aware-Factorization-Machines）" class="headerlink" title="FFM（Field-aware Factorization Machines）"></a>FFM（Field-aware Factorization Machines）</h2><p>FFM是FM的升级版模型，引入了field的概念。FFM把相同性质的特征归于同一个field。在FFM中，每一维特征$x_i$，针对每一种field $f_j$，都会学习到一个隐向量$V_{i,f_j}$，因此，隐向量不仅与特征相关，也与field相关。</p><p>设样本一共=有n个特征, f 个field，那么FFM的二次项有nf个隐向量。而在FM模型中，每一维特征的隐向量只有一个。FM可以看做FFM的特例，即把所有特征都归属到同一个field中。</p><p>$$y = w_0 + \Sigma_{i=1}^{n}w_{i} x_{i} + \Sigma_{i=1}^{n}\Sigma_{j=i+1}^{n}&lt;V_{i,f_{j}}, V_{j,f_{i}}&gt;x_{i}x_{j}$$</p><p>如果隐向量的长度为k，那么FFM的二次项参数数量为nfk，远多于FM模型。此外由于隐向量与field相关，FFM二次项并不能够化简，时间复杂度为$O(kn^2)$。需要注意的是由于FFM中的latent vector只需要学习特定的field，所以通常$K_{FFM} &lt;&lt; K_{FM}$。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://blog.csdn.net/john_xyz/article/details/78933253" target="_blank" rel="noopener">CTR预估算法之FM, FFM, DeepFM及实践</a></li><li><a href="https://blog.csdn.net/hiwallace/article/details/81333604" target="_blank" rel="noopener">FM系列算法解读（FM+FFM+DeepFM）</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;FM-Factorization-Machines&quot;&gt;&lt;a href=&quot;#FM-Factorization-Machines&quot; class=&quot;headerlink&quot; title=&quot;FM(Factorization Machines)&quot;&gt;&lt;/a&gt;FM(Factori
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>t-SNE（t-distributed Stochastic Neighbor Embedding）简介与示例</title>
+    <link href="https://ylhao.github.io/2019/05/13/268/"/>
+    <id>https://ylhao.github.io/2019/05/13/268/</id>
+    <published>2019-05-13T11:38:58.000Z</published>
+    <updated>2019-06-07T03:50:53.805Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="manifold"><a href="#manifold" class="headerlink" title="manifold"></a>manifold</h2><p>可以称之为流形数据。像绳结一样的数据，虽然在高维空间中可分，但是在人眼所看到的低维空间中，绳结中的绳子是互相重叠的不可分的。</p><h2 id="t-SNE"><a href="#t-SNE" class="headerlink" title="t-SNE"></a>t-SNE</h2><p>t-SNE是目前来说效果最好的数据降维与可视化方法，但是它的缺点也很明显，比如：占内存大，运行时间长。但是，当我们想要对高维数据进行分类，又不清楚这个数据集有没有很好的可分性（即同类之间间隔小，异类之间间隔大），可以通过t-SNE投影到2维或者3维的空间中观察一下。如果在低维空间中具有可分性，则数据是可分的。如果在低维空间中不具有可分性，可能是数据不可分，也可能仅仅是因为不能投影到低维空间。 </p><p>t-SNE将数据点之间的相似度转换为概率。原始空间中的相似度由高斯联合概率表示，嵌入空间的相似度由“学生t分布”表示。</p><p>通过原始空间和嵌入空间的联合概率的Kullback-Leibler（KL）散度来评估可视化效果的好坏，也就是说用有关KL散度的函数作为loss函数，然后通过梯度下降最小化loss函数，最终获得收敛结果。需要注意的是该loss函数不是凸函数，即具有不同初始值的多次运行可能收敛到KL散度函数的不同局部最小值，获得不同的结果。因此可以尝试不同的随机数种子（Python中可以通过设置seed来获得不同的随机分布），最后选择具有最低KL散度值的结果。</p><p>t-SNE的缺点是：</p><ul><li>t-SNE的计算复杂度很高，在数百万个样本数据集中可能需要几个小时，而PCA可以在几秒钟或几分钟内完成。</li><li>Barnes-Hut t-SNE方法（下面讲）限于二维或三维嵌入。</li><li>算法是随机的，具有不同种子的多次实验可以产生不同的结果。虽然选择loss最小的结果就行，但可能需要多次实验以选择超参数。</li><li>全局结构未明确保留。这个问题可以通过PCA初始化点（使用init =’pca’）来缓解。</li></ul><p>t-SNE的主要目的是高维数据的可视化。因此，当数据嵌入二维或三维时，效果最好。有五个参数可以控制t-SNE的优化，即会影响最后的可视化质量：</p><ul><li>perplexity：困惑度</li><li>early exaggeration factor：前期放大系数</li><li>learning rate：学习率</li><li>maximum number of iterations：最大迭代次数</li><li>angle： 角度</li></ul><h2 id="Barnes-Hut-t-SNE"><a href="#Barnes-Hut-t-SNE" class="headerlink" title="Barnes-Hut t-SNE"></a>Barnes-Hut t-SNE</h2><p>Barnes-Hut t-SNE主要是对传统t-SNE在速度上做了优化，是现在最流行的t-SNE方法，同时它与传统t-SNE还有一些不同：</p><ul><li>Barnes-Hut仅在目标维度为3或更小时才起作用。以2D可视化为主。</li><li>Barnes-Hut仅适用于密集的输入数据。稀疏数据矩阵只能用特定的方法嵌入，或者可以通过投影近似，例如使用<a href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD" target="_blank" rel="noopener">sklearn.decomposition.TruncatedSVD</a></li><li>Barnes-Hut是一个近似值。使用angle参数对近似进行控制，当参数<code>method=&quot;exact&quot;</code>时，<code>TSNE()</code>使用传统方法，此时angle参数不能使用。</li><li>Barnes-Hut可以处理更多的数据。 Barnes-Hut可用于嵌入数十万个数据点。</li></ul><p>为了可视化的目的（这是t-SNE的主要用处），强烈建议使用Barnes-Hut方法。<code>method=&quot;exact&quot;</code>时，传统的t-SNE方法尽管可以达到该算法的理论极限，效果更好，但受制于计算约束，只能对小数据集的可视化。</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>数据集在所有特征维度上的尺度应该相同。</p><h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p><img src="https://upload-images.jianshu.io/upload_images/9966001-a81bced2701783a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/9966001-d9c4bf2780335bf3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><p><img src="https://upload-images.jianshu.io/upload_images/9966001-927414388a83d3f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><pre><code class="python">import numpy as npfrom time import timeimport matplotlib.pyplot as pltfrom mpl_toolkits.mplot3d import Axes3Dfrom matplotlib.ticker import NullFormatterfrom sklearn import manifold, datasets%matplotlib inline</code></pre><pre><code class="python">X = np.array([[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]])tsne = manifold.TSNE(n_components=2)tsne.fit_transform(X)print(tsne.embedding_)</code></pre><p> // 输出<br>    [[-520.725     302.84378 ]<br>     [-116.2318    369.94275 ]<br>     [-453.6018   -101.645386]<br>     [ -49.10863   -34.546448]]</p><pre><code class="python">n_points = 1000X, color = datasets.samples_generator.make_s_curve(n_points, random_state=0)n_neighbors = 10n_components = 2</code></pre><pre><code class="python">print(X.shape)print(X[:10])print(color.shape)print(color[:10])</code></pre><p> // 输出<br>    (1000, 3)<br>    [[ 0.44399868  1.18576054 -0.10397256]<br>     [ 0.89724097  0.02012739 -1.44154121]<br>     [ 0.8240493   0.95165239 -0.43348191]<br>     [ 0.41051068  1.41754078 -0.08814421]<br>     [-0.65903619  0.08795086  0.24788877]<br>     [ 0.98089687  1.75904297 -0.80547154]<br>     [-0.55488662  1.04016283  0.16807402]<br>     [-0.5233528   0.0613221  -1.8521161 ]<br>     [-0.94192794  0.44882722 -1.33581507]<br>     [-0.89054316  1.90735139  0.54510124]]<br>    (1000,)<br>    [ 0.46005644  2.028112    0.968522    0.42301403 -0.71953656  1.37501962<br>     -0.58822668  3.69237354  4.36991857 -1.0985378 ]</p><pre><code class="python">fig = plt.figure(figsize=(8, 8))# 创建了一个figure，标题为&quot;Manifold Learning with 1000 points, 10 neighbors&quot;plt.suptitle(&quot;Manifold Learning with %i points, %i neighbors&quot;             % (1000, n_neighbors), fontsize=14)&#39;&#39;&#39;绘制S曲线的3D图像&#39;&#39;&#39;ax = fig.add_subplot(211, projection=&#39;3d&#39;)ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=color, cmap=plt.cm.Spectral)ax.view_init(4, -72)  # 初始化视角# t=SMEt0 = time()tsne = manifold.TSNE(n_components=n_components, init=&#39;pca&#39;, random_state=0)Y = tsne.fit_transform(X)  # 转换后的输出t1 = time()print(&quot;t-SNE: %.2g sec&quot; % (t1 - t0))  # 打印算法用时ax = fig.add_subplot(2, 1, 2)plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)plt.title(&quot;t-SNE (%.2g sec)&quot; % (t1 - t0))ax.xaxis.set_major_formatter(NullFormatter())  # 设置标签显示格式为空ax.yaxis.set_major_formatter(NullFormatter())plt.show()</code></pre><p> // 输出<br>    t-SNE: 21 sec<br>   <img src="https://upload-images.jianshu.io/upload_images/9966001-24f6af30142efa3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/hustqb/article/details/78144384" target="_blank" rel="noopener">数据降维与可视化——t-SNE</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;manifold&quot;&gt;&lt;a href=&quot;#manifold&quot; class=&quot;headerlink&quot; title=&quot;manifold&quot;&gt;&lt;/a&gt;manifold&lt;/h2&gt;&lt;p&gt;可以称之为流形数据。像绳结一样的数据，虽然在高维空间中可分，但是在人眼所看到的低维空间中，绳
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自然语言处理中CNN模型几种常见的Max Pooling操作</title>
+    <link href="https://ylhao.github.io/2019/05/13/267/"/>
+    <id>https://ylhao.github.io/2019/05/13/267/</id>
+    <published>2019-05-13T07:09:47.000Z</published>
+    <updated>2019-06-07T03:50:53.804Z</updated>
+    
+    <content type="html"><![CDATA[<p>CNN是目前自然语言处理中和RNN并驾齐驱的两种最常见的深度学习模型。一般而言，输入的字或者词用Word Embedding的方式表达，这样本来一维的文本信息输入就转换成了二维的输入结构，假设输入X包含m个字符，而每个字符的Word Embedding的长度为d，那么输入就是m*d的二维向量。<br><img src="https://upload-images.jianshu.io/upload_images/9966001-f0a741f6fd5d1ce8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>这里可以看出，因为NLP中的句子长度是不同的，所以CNN的输入矩阵大小是不确定的，这取决于m的大小是多少。卷积层本质上是个特征抽取层，可以设定超参数F来指定设立多少个特征抽取器（Filter），对于某个Filter来说，可以想象有一个k*d大小的移动窗口从输入矩阵的第一个字开始不断往后移动，其中k是Filter指定的窗口大小，d是Word Embedding长度。对于某个时刻的窗口，通过神经网络的非线性变换，将这个窗口内的输入值转换为某个特征值，随着窗口不断往后移动，这个Filter对应的特征值不断产生，形成这个Filter的特征向量。这就是卷积层抽取特征的过程。每个Filter都如此操作，形成了不同的特征抽取器。Pooling 层则对Filter的特征进行降维操作，形成最终的特征。一般在Pooling层之后为全连层。下面我们重点介绍NLP中CNN模型常见的Pooling操作方法。</p><h2 id="Max-Pooling-Over-Time"><a href="#Max-Pooling-Over-Time" class="headerlink" title="Max Pooling Over Time"></a>Max Pooling Over Time</h2><p>Max Pooling Over Time是NLP中CNN模型中最常见的一种下采样操作。意思是对于某个Filter的卷积运算结果，只取其中得分最大的那个值作为Pooling层保留值，其它特征值全部抛弃，值最大代表只保留这些特征中最强的，而抛弃其它弱的此类特征。</p><p>这个操作可以保证特征的位置与旋转不变性，因为不论这个强特征在哪个位置出现，都会不考虑其出现位置而能把它提出来。对于图像处理来说这种位置与旋转不变性是很好的特性，但是对于NLP来说，这个特性其实并不一定是好事，因为在很多NLP的应用场合，特征的出现位置信息是很重要的，比如主语出现位置一般在句子头，宾语一般出现在句子尾等，这些位置信息其实有时候对于分类任务来说还是很重要的，但是Max Pooling 基本把这些信息抛掉了。</p><p>其次，Max Pooling能减少模型参数数量，防止模型过拟合。因为经过Pooling操作后，往往把2D或者1D的数组转换为单一数值。</p><p><img src="https://upload-images.jianshu.io/upload_images/9966001-48ea739700a68553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><h2 id="K-Max-Pooling"><a href="#K-Max-Pooling" class="headerlink" title="K-Max Pooling"></a>K-Max Pooling</h2><p>K-Max Pooling的意思是：原先的Max Pooling Over Time从Convolution层一系列特征值中只取最强的那个值，那么我们思路可以扩展一下，K-Max Pooling可以取所有特征值中得分在TopK的值，并保留这些特征值原始的先后顺序（图3是2-max Pooling的示意图），就是说通过多保留一些特征信息供后续阶段使用。</p><p><img src="https://upload-images.jianshu.io/upload_images/9966001-f66f6f04d1d757bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><h2 id="Chunk-Max-Pooling"><a href="#Chunk-Max-Pooling" class="headerlink" title="Chunk-Max Pooling"></a>Chunk-Max Pooling</h2><p>Chunk-MaxPooling的思想是：把某个Filter对应的Convolution层的所有特征向量进行分段，切割成若干段后，在每个分段里面各自取得一个最大特征值，比如将某个Filter的特征向量切成3个Chunk，那么就在每个Chunk里面取一个最大值，于是获得3个特征值（如图4所示，不同颜色代表不同分段）。</p><p><img src="https://upload-images.jianshu.io/upload_images/9966001-72bff262844cc43c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>乍一看Chunk-Max Pooling思路类似于K-Max Pooling，因为它也是从Convolution层取出了K个特征值，但是两者的主要区别是：</p><ul><li>K-Max Pooling是一种全局取TopK特征的操作方式</li><li>Chunk-Max Pooling则是先分段，在分段内包含特征数据里面取最大值，所以其实是一种局部TopK的特征抽取方式。</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/malefactor/article/details/51078135" target="_blank" rel="noopener">自然语言处理中CNN模型几种常见的Max Pooling操作</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;CNN是目前自然语言处理中和RNN并驾齐驱的两种最常见的深度学习模型。一般而言，输入的字或者词用Word Embedding的方式表达，这样本来一维的文本信息输入就转换成了二维的输入结构，假设输入X包含m个字符，而每个字符的Word Embedding的长度为d，那么输入就
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>局部响应归一化（Local Response Normalization）</title>
+    <link href="https://ylhao.github.io/2019/05/13/266/"/>
+    <id>https://ylhao.github.io/2019/05/13/266/</id>
+    <published>2019-05-13T05:51:30.000Z</published>
+    <updated>2019-06-07T03:50:53.804Z</updated>
+    
+    <content type="html"><![CDATA[<p>LRN全称为Local Response Normalization，即局部响应归一化层，LRN函数类似Dropout，是一种防止过拟合的方法。这个函数很少使用，基本上被类似Dropout这样的方法取代，见最早的出处AlexNet论文对它的定义, <a href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="noopener">《ImageNet Classification with Deep ConvolutionalNeural Networks》</a>。</p><p>$b_{x,y}^{i} = \frac{a_{x,y}^{i}}{(k+\alpha\sum_{j=max(0, i-n/2)}^{min(N-1, i+n/2)}(a_{x,y}^{j})^2)^{\beta}} $</p><p>$b_{x,y}^{i}$是归一化后的值，i是通道的位置，代表更新第几个通道的值，x与y代表待更新像素的位置。</p><p>$a_{x,y}^{i}$是输入值，是激活函数Relu的输出值。</p><p>$k, \alpha, \beta, n/2$都是自定义系数。</p><p>N是总的通道数。</p><p>累加多少个通道的像素值取决于自定义系数 n/2 。</p><p>比如要计算红框位置的$b_{x,y}^{i}$，累加效果如图所示：</p><p><img src="https://upload-images.jianshu.io/upload_images/9966001-fb0b9f3c1a21591b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/u014296502/article/details/78839881" target="_blank" rel="noopener">LRN ( Local Response Normalization) 局部响应归一化层</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;LRN全称为Local Response Normalization，即局部响应归一化层，LRN函数类似Dropout，是一种防止过拟合的方法。这个函数很少使用，基本上被类似Dropout这样的方法取代，见最早的出处AlexNet论文对它的定义, &lt;a href=&quot;http
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BiLSTM介绍</title>
+    <link href="https://ylhao.github.io/2019/05/13/265/"/>
+    <id>https://ylhao.github.io/2019/05/13/265/</id>
+    <published>2019-05-13T03:31:04.000Z</published>
+    <updated>2019-06-07T03:50:53.804Z</updated>
+    
+    <content type="html"><![CDATA[<p>前向的LSTM与后向的LSTM结合成BiLSTM。比如，我们对“我爱中国”这句话进行编码，模型如图1所示。</p><p><img src="/img/bilstm_1.png" alt="双向LSTM编码句子"></p><p>前向的$LSTM_L$依次输入“我”，“爱”，“中国”得到三个向量{$h_{L0}$, $h_{L1}$, $h_{L2}$}。后向的$LSTM_R$依次输入“中国”，“爱”，“我”得到三个向量{$h_{R0}$, $h_{R1}$, $h_{R2}$}。最后将前向和后向的隐向量进行拼接得到{[$h_{L0}$, $h_{R2}$], [$h_{L1}$, $h_{R1}$], [$h_{L2}$, $h_{R0}$]}，即{$h_0$, $h_1$, $h_2$}。</p><p>对于情感分类任务来说，我们采用的句子的表示往往是[$h_{L2}$, $h_{R2}$]。因为其包含了前向与后向的所有信息，如图2所示。</p><p><img src="https://upload-images.jianshu.io/upload_images/9966001-315224dd5c822007.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1540354954203.png"></p><p>前向的LSTM与后向的LSTM结合成BiLSTM。比如，我们对“我爱中国”这句话进行编码，模型如图1所示。</p><p><img src="/img/bilstm_1.png" alt="双向LSTM编码句子"></p><p>前向的$LSTM_L$依次输入“我”，“爱”，“中国”得到三个向量{$h_{L0}$, $h_{L1}$, $h_{L2}$}。后向的依次输入“中国”，“爱”，“我”得到三个向量{$h_{R0}$, $h_{R1}$, $h_{R2}$}。最后将前向和后向的隐向量进行拼接得到{[$h_{L0}$, $h_{R2}$], [$h_{L1}$, $h_{R1}$], [$h_{L2}$, $h_{R0}$]}，即{$h_0$, $h_1$, $h_2$}。</p><p>对于情感分类任务来说，我们采用的句子的表示往往是[$h_{L2}$, $h_{R2}$]。因为其包含了前向与后向的所有信息，如图2所示。</p><p><img src="/img/bilstm_.png" alt="拼接向量用于情感分类"></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jiqizhixin.com/articles/2018-10-24-13" target="_blank" rel="noopener">BiLSTM介绍及代码实现</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前向的LSTM与后向的LSTM结合成BiLSTM。比如，我们对“我爱中国”这句话进行编码，模型如图1所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/bilstm_1.png&quot; alt=&quot;双向LSTM编码句子&quot;&gt;&lt;/p&gt;
+&lt;p&gt;前向的$LSTM_L$依次输入“我”，“爱”
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="LSTM" scheme="https://ylhao.github.io/tags/LSTM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++ 中的 rand 函数和 srand 函数</title>
+    <link href="https://ylhao.github.io/2019/03/30/264/"/>
+    <id>https://ylhao.github.io/2019/03/30/264/</id>
+    <published>2019-03-30T02:12:18.000Z</published>
+    <updated>2019-06-07T03:50:53.804Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、rand-函数"><a href="#一、rand-函数" class="headerlink" title="一、rand 函数"></a>一、rand 函数</h2><ul><li>函数名：rand</li><li>功能：随机数发生器</li><li>用法：int rand(void)</li><li>所在头文件：cstdlib</li></ul><p>rand()的内部实现是用<strong>线性同余法</strong>做的，它不是真的随机数，因其周期特别长，故在一定的范围里可看成是随机的。rand()返回一随机数值的范围在0至RAND_MAX间。RAND_MAX是定义在cstdlib头文件中的一个常量。要想每次都产生不同的随机数序列，用户需要用 srand 函数设定随机数种子。</p><p>要想产生一定范围内的随机数，可以用取余的方式。</p><pre><code>v1 = rand() % 100;         // 起始值为0，共计100个值，范围为0到99。v2 = rand() % 100 + 1;     // 起始值为1，共计100个值，范围为1到100。v3 = rand() % 30 + 1985;   // 起始值为1985，共计30个值，范围为1985到2014。</code></pre><h2 id="二、srand-函数"><a href="#二、srand-函数" class="headerlink" title="二、srand 函数"></a>二、srand 函数</h2><ul><li>函数名：srand</li><li>功能：初始化随机数发生器</li><li>用法：void srand(unsigned int seed)</li></ul><p>srand()用来设置rand()产生随机数时的随机数种子。不同的随机数种子，产生不同的随机数序列。比较常见的使用方式为:</p><pre><code>srand (time(NULL));</code></pre><p>其中 time 函数定义在 ctime 头文件中。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一、rand-函数&quot;&gt;&lt;a href=&quot;#一、rand-函数&quot; class=&quot;headerlink&quot; title=&quot;一、rand 函数&quot;&gt;&lt;/a&gt;一、rand 函数&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;函数名：rand&lt;/li&gt;
+&lt;li&gt;功能：随机数发生器&lt;/li&gt;
+&lt;li
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://ylhao.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="编程" scheme="https://ylhao.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="C++" scheme="https://ylhao.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 中的 __all__</title>
+    <link href="https://ylhao.github.io/2019/03/30/263/"/>
+    <id>https://ylhao.github.io/2019/03/30/263/</id>
+    <published>2019-03-29T16:08:27.000Z</published>
+    <updated>2019-06-07T03:50:53.803Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>test1.py</code> 中的内容如下：</p><pre><code>__all__ = [&#39;aoo&#39;, &#39;_boo&#39;]aoo = &#39;aoo&#39;_boo = &#39;boo&#39;</code></pre><p><code>test2.py</code> 中的内容如下：</p><pre><code>from test1 import *print(aoo)print(_boo)</code></pre><ol><li>如果 test1.py 中没有 <strong>all</strong>，执行脚本 test2.py 时，执行 print(_boo) 时，会抛出异常。</li><li>要想在 test2.py 中使用 test1.py 中的 _boo，必须在 <strong>all</strong> 中显式的包含 ‘_boo’。</li><li>在 test1.py 中定义了 <strong>all</strong> 后，如果不在 <strong>all</strong> 中显式的指定 ‘aoo’，执行脚本 test2.py 时，执行 print(aoo) 时，会抛出异常。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;test1.py&lt;/code&gt; 中的内容如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__all__ = [&amp;#39;aoo&amp;#39;, &amp;#39;_boo&amp;#39;]
+
+aoo = &amp;#39;aoo&amp;#39;
+_boo = &amp;#39;boo&amp;#39;
+&lt;/code&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://ylhao.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="编程" scheme="https://ylhao.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Python" scheme="https://ylhao.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 面试总结（二）</title>
+    <link href="https://ylhao.github.io/2019/03/22/262/"/>
+    <id>https://ylhao.github.io/2019/03/22/262/</id>
+    <published>2019-03-22T00:35:08.000Z</published>
+    <updated>2019-06-07T03:50:53.803Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 是 Java 的关键字，它所表示的是“这部分是无法修改的”。使用到 final 的有四种情况：变量、方法、类、参数。</p><ul><li>修饰变量：编译时常量和运行时常量</li><li>修饰方法：final 关键字修饰的方法可以被继承，但是不能被重写</li><li>修饰类：如果某个类用 final 修饰，表明该类是最终类，它不希望也不允许其他来继承它。在程序设计中出于安全或者其他原因，我们不允许该类存在任何变化，也不希望它有子类。  对于 final 修饰的类来说，它的成员变量可以为 final，也可以为非 final。如果定义为 final，那么 final 数据的规则同样适合它。而它的方法则会自动的加上 final，因为 final 类是无法被继承，所以这个是默认的。</li><li>修饰参数：若某个参数被 final 修饰了，则代表了该参数是不可改变的，final 修饰参数在内部类中是非常有用的，在匿名内部类中，为了保持参数的一致性，若所在的方法的形参需要被内部类里面使用时，该形参必须为 final。</li></ul><h3 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h3><p>static 关键字可以修饰变量、方法、代码块，被 static 修饰的变量和方法是属于类的。</p><ul><li>变量：被 static 修饰的变量我们称之为静态变量，静态变量是随着类加载时被完成初始化的，它在内存中仅有一个，且 JVM 也只会为它分配一次内存，同时类所有的实例都共享静态变量，可以直接通过类名来访问它。</li><li>方法：被 static 修饰的方法我们称之为静态方法，我们通过类名对其进行直接调用，static 方法必须实现，也就是说他不能是抽象方法（不能用 abstract 关键字来修饰）。</li><li>代码块：被 static 修饰的代码块，我们称之为静态代码块，静态代码块会随着类的加载一块执行，而且他可以随意放，可以存在于该类的任何地方。</li></ul><p>使用 static 关键字还要注意以下几点：</p><ul><li>静态方法中不能访问类的非静态成员变量和非静态成员方法，但是在非静态成员方法中是可以访问静态成员方法和静态成员变量的。</li><li>static 不允许修饰局部变量。</li><li>无论是变量、方法，还是代码块，只要用 static 修饰，就是在类被加载时就已经”准备好了”。非静态变量在 new 一个对象的时候才会初始化（可参考《Java编程思想》 95 页例子理解）。</li><li>static 修饰的变量和方法都能被继承，但不能被“修改”，但都能够再次声明。</li></ul><p><a href="https://www.cnblogs.com/dolphin0520/p/3799052.html" target="_blank" rel="noopener">参考</a></p><h3 id="如何理解构造器实际上是静态方法？"><a href="#如何理解构造器实际上是静态方法？" class="headerlink" title="如何理解构造器实际上是静态方法？"></a>如何理解构造器实际上是静态方法？</h3><p>假设有一个类名为 Dog 的类，首次创建 Dog 类的对象（或者 Dog 类的静态成员和静态方法被访问）的时候，Java 解释器必须查找类路径，定位 Dog.class 文件，然后载入 Dog.class。所以从这个角度去看的话，构造器实际上是静态方法。</p><h3 id="请总结一下对象的创建过程？"><a href="#请总结一下对象的创建过程？" class="headerlink" title="请总结一下对象的创建过程？"></a>请总结一下对象的创建过程？</h3><p>可参考《Java编程思想》 96 页。</p><p>假设有一个类名为 Dog 的类，首次创建 Dog 类的对象（或者 Dog 类的静态成员和静态方法被访问）的时候，Java 解释器必须查找类路径，定位 Dog.class 文件，然后载入 Dog.class。接下来有关静态初始化的所有动作都会执行，因此静态初始化只在 Class 对象首次加载的时候执行一次。当用 new Dog() 创建对象的时候，首先将在堆上为 Dog 对象分配足够的存储空间。这块存储空间会被清零，这一步就自动将 Dog 对象中的所有基本数据类型都设置成了默认值，而引用被设置成了 null。接着执行所有出现于字段定义处的初始化动作（如果有父类的话，那么会先转去父类执行父类的出现于字段定义处的初始化动作，接着执行父类的构造器，依此类推），最后执行构造器。</p><h3 id="默认初始值的问题？"><a href="#默认初始值的问题？" class="headerlink" title="默认初始值的问题？"></a>默认初始值的问题？</h3><p>类中的成员变量是有默认初始值的，如果是基本类型的变量会获得基本类型的标准初值，如果是对象引用，默认的初始值就是 null。而<strong>方法中的局部变量则必须在使用之前赋值</strong>。</p><h3 id="Java-抽象类"><a href="#Java-抽象类" class="headerlink" title="Java 抽象类"></a>Java 抽象类</h3><ul><li>抽象类不能被实例化</li><li>一个类只能继承一个抽象类</li><li>抽象类中不一定包含抽象方法，但是有抽象方法的类必定是抽象类</li><li>抽象类中的抽象方法只是声明，不能包含方法体</li><li>构造方法和类方法不能声明为抽象方法</li><li>抽象类的子类必须给出抽象类中抽象方法的具体实现，除非该子类也是抽象类</li><li>abstract 不能与 private、static、final 或者 native 并列修饰同一方法，也就是说抽象方法必须为 public 或者 protected，缺省情况下默认为 public。</li></ul><h3 id="方法重载（overload）"><a href="#方法重载（overload）" class="headerlink" title="方法重载（overload）"></a>方法重载（overload）</h3><p>重载（overloading） 是在一个类里面，方法名字相同，而参数不同。每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表（参数的个数、类型、顺序），注意与返回类型无关，也就是说无法以返回值类型作为重载函数的区分标准。最常用的地方就是构造器的重载。虽然参数的顺序可以区分不同的函数，但是一般情况不考虑使用参数顺序进行区分。因为这样做会使代码变得难以维护。</p><p>当涉及基本类型的重载时，匹配顺序如下所示：</p><ul><li>char -&gt; int -&gt; long -&gt; float -&gt; double</li><li>byte -&gt; short -&gt; int -&gt; long -&gt; float -&gt; double</li></ul><h3 id="方法重写（override）"><a href="#方法重写（override）" class="headerlink" title="方法重写（override）"></a>方法重写（override）</h3><p>重写是子类对父类的允许访问的方法的实现过程进行重新编写，方法重写时必须遵守以下几点规则：</p><ul><li>异常：重写方法不能抛出新的检查异常或者比被重写方法申明更加宽泛的异常</li><li>参数列表：参数列表必须完全与被重写方法的相同</li><li>返回类型：返回类型必须完全与被重写方法的返回类型相同</li><li>访问权限：访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为 public，那么在子类中重写该方法就不能声明为 protected</li></ul><p>以下几种情况不能被重写：</p><ul><li>final：声明为 final 的方法不能被重写</li><li>static：声明为 static 的方法不能被重写，但是能够被再次声明</li><li>无法继承：如果不能继承一个方法，则不能重写这个方法</li><li>构造方法：构造方法不能被重写</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;final-关键字&quot;&gt;&lt;a href=&quot;#final-关键字&quot; class=&quot;headerlink&quot; title=&quot;final 关键字&quot;&gt;&lt;/a&gt;final 关键字&lt;/h3&gt;&lt;p&gt;final 是 Java 的关键字，它所表示的是“这部分是无法修改的”。使用到 fi
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://ylhao.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="编程" scheme="https://ylhao.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Java" scheme="https://ylhao.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 面试总结（一）</title>
+    <link href="https://ylhao.github.io/2019/03/20/261/"/>
+    <id>https://ylhao.github.io/2019/03/20/261/</id>
+    <published>2019-03-20T09:31:39.000Z</published>
+    <updated>2019-06-07T03:50:53.803Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>封装的好处有哪些？</strong></p><ol><li>良好的封装能够减少耦合</li><li>类内部的结构可以自由修改</li><li>可以对成员进行更精确的控制</li><li>隐藏信息，实现细节</li></ol><p><strong>Java 支持的基本数据类型有几种？各占多少字节？</strong><br><img src="/img/java面试总结_1.png" alt=""></p><p><strong>String 是不是基本数据类型？</strong><br>String 不是基本数据类型。</p><p><strong>什么是值传递和引用传递？</strong><br>在 Java 中值传递通常是对基本数据类型变量而言的，传递的是变量的值。引用传递是对对象类型变量而言的，传递的是对象的地址。</p><p><strong>什么是JDBC？</strong><br>JDBC提供了一套访问各种关系型数据库的接口。通过JDBC技术，开发人员可以用纯 Java 语言和标准的 SQL 语句编写完整的数据库应用程序，并且真正地实现了软件的跨平台性。通常情况下使用JDBC完成以下操作：</p><ol><li>同数据库建立连接</li><li>向数据库发送SQL语句</li><li>处理从数据库返回的结果</li></ol><p><strong>JDBC 有哪些优点？</strong></p><ol><li>JDBC使软件开发人员从复杂的驱动程序编写工作中解脱出来，可以完全专注于业务逻辑开发。</li><li>JDBC支持多种关系型数据库，大大增加了软件的可移植性。</li><li>JDBC API 是面向对象的，软件开发人员可以将常用的方法进行二次封装，从而提高代码的重用性。</li></ol><p><strong>Java的访问控制权限有哪些？</strong><br>共有 private、default、protected、public 四种。</p><ol><li>如果一个成员方法或变量名前使用了private， 那么这个成员方法或者变量<strong>只能在类的内部使用</strong>。</li><li>如果一个成员方法或变量名前没有使用任何访问控制符，就为default。那么这个成员方法或者变量<strong>可以被同包类访问</strong>。</li><li>如果一个成员方法或者变量名前使用了protected，那么这个成员方法或者变量<strong>可以被同包类和非同包子类访问</strong>。</li><li>如果一个成员方法或者变量名前使用了public，那么这个成员方法或者变量可以被<strong>所有类</strong>访问。</li></ol><p><strong>Java 类的访问控制权限有哪些？</strong><br>Java 类只有包访问权限和 public 访问权限两种，并且 Java 只允许一个 Java 文件中最多出现一个 public 类，并且该类的类名必须与 Java 文件名完全一致，该类向外提供接口。当一个 Java 文件中一个 public 类都没有时，表明该文件中的内容仅供包内使用，对外界不可见。</p><p><strong>什么是IOC？</strong><br>获得对象的传统方式是直接new一个对象出来，IOC（控制反转）则把对象的生命周期由Spring管理，直接从Spring那里获取一个对象，就像把控制权从自己的手里交给了Spring。</p><p><strong>什么是AOP？</strong><br>AOP就是 Aspect Oriented Program 面向切面编程 。首先，在面向切面编程的思想里面，把功能分为核心业务功能和周边功能。 所谓的核心业务，比如登陆、增加数据、删除数据都叫核心业务。所谓的周边功能，比如性能统计、日志、事务管理等 。周边功能在Spring的面向切面编程AOP思想里，即被定义为切面，在面向切面编程AOP的思想里面，核心业务功能和切面功能分别独立进行开发 ，然后把切面功能和核心业务功能 “编织” 在一起，这就叫AOP。</p><p><strong>throw和throws的区别是什么？</strong><br>throws与throw这两个关键字接近，不过意义不一样，有如下区别：</p><ol><li>throws 出现在方法声明上，而throw通常都出现在方法体内。</li><li>throws 表示出现异常的一种可能性，并不一定会发生这些异常；throw则是抛出了异常，执行throw则一定抛出了某个异常对象。</li></ol><p><strong>实体类在Hibernate中的三种状态？</strong></p><ul><li>瞬时态：瞬时指的是没有和hibernate发生任何关系，在数据库中也没有对应的记录，一旦JVM结束，这个对象也就消失了。</li><li>持久态：持久指得是一个对象和hibernate发生联系，有对应的session，并且在数据库中有对应的一条记录 。</li><li>托管态：脱管指的是一个对象虽然在数据库中有对应的一条记录，但是它所对应的session已经关闭了。</li></ul><p><strong>什么是HQL？</strong><br>HQL（Hibernate Query Language）是hibernate专门用于查询数据的语句，有别于SQL，HQL跟接近于面向对象的思维方式。 比如使用的是类的名字Product而非表格的名字product_。</p><p><strong>String a = “a”，后面的“a”存到哪了？</strong><br>常量区</p><p><strong>String s = ”abc“的工作过程可以分为几个步骤？</strong></p><ol><li>定义了一个名为”s”的String类型的引用。</li><li>检查在常量池中是否存在值为”abc”的字符串对象；</li><li>如果不存在，则在常量池（字符串池）创建存储进一个值为”abc”的字符串对象。如果已经存在，则跳过这一步工作。</li><li>将对象引用s指向字符串池当中的“abc”对象。</li></ol><p><strong>String s = new String(“abc”)的的步骤？</strong></p><ol><li>定义了一个名为”s”的String类型的引用。</li><li>检查在常量池中是否存在值为”abc”的字符串对象；</li><li>如果不存在，则在常量池（字符串池）存储进一个值为”abc”的字符串对象。如果已经存在，则跳过这一步工作。</li><li>在堆中创建存储一个“abc”字符串对象。</li><li>将对象引用指向堆中的对象。</li></ol><p><strong>JDK,JRE,JVM的区别和联系？</strong></p><ul><li>JVM是Java虚拟机</li><li>JRE是Java运行时环境，包含JVM和Java核心类库还有一些支持文件，但是JRE不包括java、javac、javadoc等工具</li><li>JDK是Java开发工具，包含JRE和一些工具，比如java、javac、javadoc等</li></ul><p><strong>HashMap 和 HashTable 的区别有哪些？</strong><br><img src="/img/java面试总结_2.png" alt=""></p><p><strong>Servlet生命周期？</strong></p><ul><li>实例化，初始化，提供服务，销毁，被回收</li><li>用过通过浏览器发起请求，请求路径对应的servlet被调用的时候，该Servlet就会被实例化，只会实例化一次，servlet是单实例的。</li><li>函数调用顺序：构造函数，init(ServletConfig)，service(HttpServletRequest, HttpServletResponse)，destroy()</li></ul><p><strong>数据库连接池是什么意思？</strong><br>像打开关闭数据库连接这种和数据库的交互可能是很费时的，尤其是当客户端数量增加的时候，会消耗大量的资源，成本是非常高的。可以在应用服务器启动的时候建立很多个数据库连接并维护在一个池中。连接请求由池中的连接提供。在连接使用完毕以后，把连接归还到池中，以用于满足将来更多的请求。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;封装的好处有哪些？&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;良好的封装能够减少耦合&lt;/li&gt;
+&lt;li&gt;类内部的结构可以自由修改&lt;/li&gt;
+&lt;li&gt;可以对成员进行更精确的控制&lt;/li&gt;
+&lt;li&gt;隐藏信息，实现细节&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="https://ylhao.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="编程" scheme="https://ylhao.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Java" scheme="https://ylhao.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu16.04 挂载 4TB 硬盘并更换 home 目录</title>
+    <link href="https://ylhao.github.io/2019/03/18/260/"/>
+    <id>https://ylhao.github.io/2019/03/18/260/</id>
+    <published>2019-03-18T06:28:56.000Z</published>
+    <updated>2019-06-07T03:50:53.802Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="检查硬盘信息"><a href="#检查硬盘信息" class="headerlink" title="检查硬盘信息"></a>检查硬盘信息</h2><p>首先检查硬盘信息，确保能看到要挂载的新硬盘的信息。</p><pre><code>ls /dev/sd*fdisk -l </code></pre><h2 id="使用-patred-分区"><a href="#使用-patred-分区" class="headerlink" title="使用 patred 分区"></a>使用 patred 分区</h2><p>fdisk 最大只能处理 2TB 的磁盘，所以用 parted 来分区。因为 MBR 分区表不支持容量大于 2.2TB(2.2 × 1012 字节) 的分区，所以也有一些 BIOS 系统为了支持大容量硬盘而用 GPT 分区表取代 MBR 分区表。</p><pre><code>parted /dev/sdb</code></pre><p><img src="/img/260_parted_1.jpg" alt=""></p><p>分区完成后，执行以下命令重新查看硬盘信息。</p><pre><code>fdisk -l</code></pre><h2 id="建立文件系统"><a href="#建立文件系统" class="headerlink" title="建立文件系统"></a>建立文件系统</h2><p>建立 ext4 文件系统。</p><pre><code>sudo mkfs -t ext4 /dev/sdb1</code></pre><h2 id="更换-home-目录"><a href="#更换-home-目录" class="headerlink" title="更换 home 目录"></a>更换 home 目录</h2><p>建立一个临时文件夹，供此硬盘临时挂载。</p><pre><code>mkdir /new_home</code></pre><p>将硬盘挂载到临时文件夹下。</p><pre><code>sudo mount -t ext4 -o rw /dev/sdb1 /new_home/</code></pre><p>同步 /home 目录到此硬盘，同步过程中加上 –exclude 选项防止提示 gvfs 权限问题。若文件较多，同步时间会很长，同步后可以看到 new_home 文件夹已有有了 /home 文件夹下所有的东西，包括各个用户的权限等。</p><pre><code>sudo rsync –aXS –-exclude=&#39;/*/.gvfs&#39; /home/. /new_home/.</code></pre><p>使用以下命令获取 uuid。</p><pre><code>blkid /dev/sdb</code></pre><p>修改 /etc/fstab 文件重新挂载磁盘。<br><img src="/img/260_parted_2.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;检查硬盘信息&quot;&gt;&lt;a href=&quot;#检查硬盘信息&quot; class=&quot;headerlink&quot; title=&quot;检查硬盘信息&quot;&gt;&lt;/a&gt;检查硬盘信息&lt;/h2&gt;&lt;p&gt;首先检查硬盘信息，确保能看到要挂载的新硬盘的信息。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ls /dev/sd*
+f
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://ylhao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Linux" scheme="https://ylhao.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu16.04 安装 JDK</title>
+    <link href="https://ylhao.github.io/2019/03/13/259/"/>
+    <id>https://ylhao.github.io/2019/03/13/259/</id>
+    <published>2019-03-13T14:31:41.000Z</published>
+    <updated>2019-06-07T03:50:53.802Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里下载的是 JDK 8，如果想要安装其他版本，过程基本一致。</p><h2 id="下载、解压"><a href="#下载、解压" class="headerlink" title="下载、解压"></a>下载、解压</h2><p>首先创建文件夹，然后将<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">下载</a>的 .tar.gz 压缩包移动到该文件夹下，然后解压该压缩包。可以使用 wget 下载，不可以的话就手动下载好了~</p><pre><code>wget --no-check-certificate --no-cookies --header &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot; http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gzsudo mkdir /opt/javasudo mv jdk-8u161-linux-x64.tar.gz /opt/javacd /opt/javatar -zxvf jdk-8u161-linux-x64.tar.gz</code></pre><h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><pre><code>// 打开文件sudo vim /etc/profile// 在文件末尾追加以下内容export JAVA_HOME=/opt/java/jdk1.8.0_151export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jarexport PATH=$JAVA_HOME/bin:$PATH // 使配置生效、测试source /etc/profilejava -versionjavac</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这里下载的是 JDK 8，如果想要安装其他版本，过程基本一致。&lt;/p&gt;
+&lt;h2 id=&quot;下载、解压&quot;&gt;&lt;a href=&quot;#下载、解压&quot; class=&quot;headerlink&quot; title=&quot;下载、解压&quot;&gt;&lt;/a&gt;下载、解压&lt;/h2&gt;&lt;p&gt;首先创建文件夹，然后将&lt;a href=
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://ylhao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Linux" scheme="https://ylhao.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客维护日志</title>
+    <link href="https://ylhao.github.io/2019/01/07/258/"/>
+    <id>https://ylhao.github.io/2019/01/07/258/</id>
+    <published>2019-01-07T05:52:22.000Z</published>
+    <updated>2019-06-07T03:50:53.802Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先说明一下该博客使用的主题为 <a href="https://yelog.org/" target="_blank" rel="noopener">3-hexo</a>，其次我根据我的个人喜好对该主题进行了适当的修改。</p><h2 id="该博客已有的功能"><a href="#该博客已有的功能" class="headerlink" title="该博客已有的功能"></a>该博客已有的功能</h2><ul><li>评论</li><li>rss</li><li>sitemap(sitemap.xml)</li><li>baidusitemap(baidusitemap.xml)</li><li>统计（字数统计、访问量统计）</li><li>打赏</li><li>置顶</li><li>头像</li><li>彩色图标（知乎、CSDN、剑书、掘金等）</li><li>全文搜索</li><li>MathJax</li><li>代码高亮</li><li>多作者模式</li><li>友链</li><li>关于页面</li></ul><h2 id="博客自动备份的方法"><a href="#博客自动备份的方法" class="headerlink" title="博客自动备份的方法"></a>博客自动备份的方法</h2><p>以下提供的是一种自动备份的参考方案，可以根据自己的需要制定自己的备份方案。</p><ul><li>首先创建了一个 <a href="https://github.com/ylhao/blog-backup" target="_blank" rel="noopener">repo</a> 用于备份我的个人博客。</li><li>在博客根目录 <code>/blog</code> 下添加 .gitignore 文件。</li><li>在 <code>/blog/themes/3-hexo</code> 目录下添加 <code>.gitignore</code> 文件，拷贝一份该目录下的 <code>_config.yml</code> 文件并命名为 <code>_config.yml.backup</code>，去掉 <code>_config.yml.backup</code> 文件中的敏感信息，最后把 <code>_config.yml</code> 添加到该目录下的 <code>.gitignore</code> 文件中。</li><li>在博客根目录中执行 <code>git init</code> 命令。</li><li>在博客根目录中执行 <code>git remote add origin git@github.com:ylhao/blog-backup.git</code>。</li><li>在 <code>~/.bashrc</code> 文件中添加 <code>alias hd=&#39;hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; git add . &amp;&amp; git commit -m &quot;update&quot; &amp;&amp; git push -f origin master&#39;</code>。</li><li>执行 <code>source ~/.bashrc</code> 使配置生效。</li><li>执行 hd 进行部署。</li></ul><h2 id="让博客更好的支持数学公式的编辑"><a href="#让博客更好的支持数学公式的编辑" class="headerlink" title="让博客更好的支持数学公式的编辑"></a>让博客更好的支持数学公式的编辑</h2><p>由于 hexo 的 MarkDown 渲染器与 MathJax 有冲突，会造成多行公式的使用不正常，所以在使用之前需要修改两个地方：</p><pre><code>编辑 node_modules\marked\lib\marked.js 脚本：escape: /^\\([\\`*{}\[\]()# +\-.!_&gt;])/,改为escape: /^\\([`*\[\]()# +\-.!_&gt;])/,em: /^\b_((?:[^_]|__)+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,改为em:/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;首先说明一下该博客使用的主题为 &lt;a href=&quot;https://yelog.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;3-hexo&lt;/a&gt;，其次我根据我的个人喜好对该主题进行了适当的修改。&lt;/p&gt;
+&lt;h2 id=&quot;该博客已有的功能&quot;&gt;&lt;a 
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://ylhao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="博客管理" scheme="https://ylhao.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文章目录</title>
+    <link href="https://ylhao.github.io/2019/01/07/catalog/"/>
+    <id>https://ylhao.github.io/2019/01/07/catalog/</id>
+    <published>2019-01-07T05:40:28.000Z</published>
+    <updated>2019-06-07T03:50:53.825Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>Add Two Numbers</li><li>Longest Substring Without Repeating Characters</li><li>LSI算法实现篇</li><li>Permutations</li><li>CNN：CV、边缘检测、卷积运算、Padding、Stride、filter</li><li>在Ubuntu上安装Tomcat</li><li>计算机网络：基础知识整理</li><li>CPP：常见函数的实现</li><li>linux.md</li><li>剑指Offer：青蛙跳台阶问题</li><li>剑指Offer：翻转字符串</li><li>3Sum</li><li>单层感知机不能表示异或逻辑的证明过程</li><li>剑指Offer：不分行从上到下打印二叉树</li><li>Permutations II</li><li>EM算法</li><li>计算机网络：交换机、路由器、网关</li><li>剑指Offer：斐波那契数列</li><li>CPP：union介绍及其应用</li><li>CPP：刷题常用知识点</li><li>笔试题：电脑耗电量计算</li><li>gitignore文件</li><li>Nth Dight</li><li>笔试：笔试题练习</li><li>CPP：memset函数</li><li>Java反序列化漏洞</li><li>Java：二叉树的遍历算法实现</li><li>笔试题：全排列和子集问题</li><li>神经网络参数的初始化问题</li><li>空设备文件和重定向</li><li>剑指Offer：两个链表的第一个公共节点</li><li>TensorFlow：波士顿房价预测</li><li>笔试题：进制转换</li><li>剑指Offer：二进制中1的个数</li><li>剑指Offer：最小的K个数</li><li>计算机网络：交换机、路由器、网关</li><li>BM25算法</li><li>剑指Offer：机器人的运动范围</li><li>剑指Offer：矩形覆盖</li><li>grep命令</li><li>剑指Offer：反转链表</li><li>神经网络中的方差和偏差</li><li>Nth Dight</li><li>JavaScript：gulp学习指南</li><li>笔试题：split函数的实现</li><li>CNN：识别手写数字代码实现</li><li>Construct Binary Tree from Preorde and Inorder Traversal</li><li>剑指Offer：重建二叉树</li><li>N-Queens II</li><li>高斯混合模型</li><li>高斯判别分析</li><li>笔试题：atoi</li><li>SQL：知识点总结</li><li>剑指Offer：反转链表</li><li>Pycharm的安装与使用</li><li>剑指Offer：二叉搜索树与双向链表</li><li>格式化字符串漏洞总结</li><li>剑指Offer：0到n-1中缺失的数字</li><li>Git基本操作</li><li>笔试题：从n个数中随机选m个</li><li>source命令的作用</li><li>剑指Offer：链表中环的入口节点</li><li>单层感知机不能表示异或逻辑的证明过程</li><li>剑指Offer：树的子结构</li><li>gdb自查手册</li><li>剑指Offer：字符串的组合</li><li>剑指Offer：栈的压入、弹出序列</li><li>剑指Offer：机器人的运动范围</li><li>剑指Offer：分行从上到下打印二叉树</li><li>Search in Rotated Sorted Array</li><li>深度残差网络（ResNet）</li><li>Coin Change</li><li>剑指Offer：删除列表中的节点</li><li>笔试题：进制转换</li><li>数据结构与算法：最小生成树MST</li><li>CPP：二叉树遍历算法的实现</li><li>Python：sorted函数对字典按key排序和按value排序</li><li>CPP：字符串比较</li><li>解释dev/null与2</li><li>统计一个文件夹下的文件个数</li><li>profile文件和环境变量</li><li>剑指Offer：数组中只出现一次的两个数字</li><li>Construct-Binary-Tree-from-Inorde-and-Postorder-Traversal</li><li>Python：Python中的编码问题</li><li>剑指Offer：数组中的重复数字</li><li>Ubuntu16.04配置Hexo</li><li>Wiggle Sort II</li><li>剑指Offer：和为s的数字</li><li>笔试题：网易-会话列表</li><li>make与makefile</li><li>数据结构与算法：最大堆</li><li>剑指Offer：包含min函数的栈</li><li>笔试题：全排列和子集问题</li><li>剑指Offer：复杂链表的复制</li><li>CPP：字符串指针与字符数组的区别</li><li>TensorFlow：文本分类基本流程</li><li>Hadoop：入门篇-基本流程</li><li>剑指Offer：二进制中1的个数</li><li>决策树算法（一）</li><li>k-means算法</li><li>计算机网络：基础知识整理</li><li>数据结构与算法：KMP算法</li><li>集成学习（一）</li><li>剑指Offer：滑动窗口的最大值</li><li>剑指Offer：顺时针打印矩阵</li><li>TensorFlow：保存和加载模型</li><li>剑指Offer：二叉树的深度</li><li>剑指Offer：左旋转字符串</li><li>修改hosts文件</li><li>剑指Offer：二维数组中的查找</li><li>Hadoop：单节点伪分布式</li><li>数据结构与算法：LRU算法</li><li>Hello World</li><li>剑指Offer：青蛙跳台阶问题</li><li>笔试题：动态规划</li><li>剑指Offer：删除列表中的重复节点</li><li>useradd和adduser的区别与联系</li><li>剑指Offer：八皇后问题</li><li>数据结构与算法：树结构总结</li><li>循环神经网络：LSTM</li><li>机器学习资料整理</li><li>笔试题：网易-时钟</li><li>混淆矩阵、查准率、查全率、F-Score</li><li>什么是CUDA（入门资料）？</li><li>ubuntu16.04GPU配置</li><li>剑指Offer：平衡二叉树</li><li>First Unique Character in a String</li><li>Python：超简BP算法实现（原理再现）</li><li>概率论与数理统计：常见概率分布</li><li>决策树算法（三）：C4.5</li><li>gitignore文件</li><li>剑指Offer：数据流中的中位数</li><li>线性判别分析</li><li>决策树算法（二）：ID3</li><li>笔试题：循环队列</li><li>决策树算法（四）：CART</li><li>剑指Offer：对称的二叉树</li><li>线性回归（二）</li><li>CPP：刷题常用知识点</li><li>笔试题：合法的三角形个数</li><li>SSH远程端口转发</li><li>GPU测试代码</li><li>CPP：结构体</li><li>剑指Offer：矩阵中的路径</li><li>笔试题：大数相加</li><li>剑指Offer：链表中倒数第K个节点</li><li>剑指Offer：字符串的排列</li><li>JavaScript：npm包管理工具</li><li>循环神经网络：简单结构的循环神经网络</li><li>Ubuntu必备手册</li><li>剑指Offer：用两个栈实现队列</li><li>笔试题：八皇后问题</li><li>GPU 状态监测 nvidia-smi 命令详解</li><li>笔试题：抢钱游戏</li><li>剑指Offer：数值的整数次方</li><li>集成学习（二）：Adaboost</li><li>对常见的激活函数的总结</li><li>CPP：二分查找</li><li>Add Two Numbers</li><li>剑指Offer：和为s的连续正数序列</li><li>CPP：main函数、头文件</li><li>剑指Offer：剪绳子</li><li>逻辑回归</li><li>笔试题：大数相乘</li><li>笔试题：使用堆求TopK</li><li>Python：requirements.txt文件</li><li>循环神经网络：GRU</li><li>JavaScript：gulp自动化构建工具</li><li>剑指Offer：表示数值的字符串</li><li>笔试题：堆排序</li><li>层次聚类算法</li><li>剑指Offer：从尾到头打印链表</li><li>剑指Offer：二叉搜索树的后序遍历序列</li><li>KNN算法（一）</li><li>Divide Two Integers</li><li>笔试题：并查集</li><li>剑指Offer：二叉搜索树中的第K大节点</li><li>LSI算法理论篇</li><li>CPP：二叉树遍历算法的实现</li><li>神经网络中的方差和偏差</li><li>对常见的优化算法的总结</li><li>TF-IDF</li><li>指数加权平均</li><li>vim实用配置和常用功能总结</li><li>TensorFlow：基本分类算法的基本流程</li><li>线性回归（一）</li><li>感知机（一）</li><li>笔试题：围棋的气</li><li>岭回归</li><li>剑指Offer：调整数组顺序使奇数位于偶数前面</li><li>格式化字符串漏洞</li><li>SUID权限</li><li>词袋模型</li><li>GCC编译器</li><li>更新Ubuntu内核</li><li>sklearn：SVC算法和随机森林算法实战</li><li>KNN算法（二）：kd-tree</li><li>笔试题：求两个有序整型数组的交集</li><li>剑指Offer：不修改数组找出重复的数字</li><li>scp远程拷贝命令</li><li>剑指Offer：不分行从上到下打印二叉树</li><li>剑指Offer：在排序数组中查找数字</li><li>4Sum II</li><li>Python反序列化漏洞</li><li>剑指Offer：合并两个排序的链表</li><li>ssh命令登录远程主机</li><li>感知机（二）</li><li>Linux命令行常用快捷方式</li><li>N-Queens</li><li>导数、偏导数、方向导数、梯度</li><li>Linux设置静态IP</li><li>dpkg包管理器</li><li>Java：排序算法实现</li><li>剑指Offer：二叉树中和为某一值的路径</li><li>剑指Offer：二叉树的下一个节点</li><li>循环神经网络：RNN简介、BPTT算法、梯度消失、梯度爆炸</li><li>特征值分解和奇异值分解</li><li>ubuntu16.04添加删除用户</li><li>Shuffle an Array</li><li>主成分分析（PCA）</li><li>学习率衰减</li><li>笔试题：股票利润的问题</li><li>tec</li><li>CNN：池化层</li><li>CPP：排序算法总结</li><li>Permutations</li><li>CPP：vector容器的常用API</li><li>局部加权线性回归</li><li>笔试题：各个sum问题</li><li>剑指Offer：旋转数组的最小数字</li><li>剑指Offer：数组中出现次数超过一半的数字</li><li>防止过拟合的方式</li><li>隐马尔可夫模型（一）</li><li>剑指Offer：连续子数组的最大和</li><li>剑指Offer：替换空格</li><li>超参调节方法</li><li>CPP：union介绍及其应用</li><li>感知机（三）</li><li>文本预处理方式自查文档</li><li>计算机网络：交换机、路由器、网关</li><li>笔试题：最大连乘积</li><li>剑指Offer：之字形打印二叉树</li><li>Ubuntu防火墙配置（UFW）</li><li>集成学习（三）：随机森林</li><li>TensorFlow：Softmax识别手写数字</li><li>朴素贝叶斯算法</li><li>BM25算法实现</li><li>JavaScript：Babel转码器</li><li>笔试题：出卷子</li><li>CPP：void和void指针</li><li>剑指Offer：正则表达式匹配</li><li>CNN：卷积层和简单的CNN网络结构</li><li>笔试题：所有区间的极差值之和</li><li>Ubuntu常用快捷键</li><li>剑指Offer：翻转字符串</li><li>剑指Offer：二叉树的镜像</li><li>Python：if <strong>name</strong>  == “<strong>main</strong>“</li><li>博客维护日志</li><li>Ubuntu16.04 安装 JDK</li><li>Ubuntu16.04 挂载 4TB 硬盘</li><li>Java 面试总结（一）</li><li>Java 面试总结（二）</li><li>Python 中的 <strong>all</strong></li><li>C++ 中的 rand 函数和 srand 函数</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;Add Two Numbers&lt;/li&gt;
+&lt;li&gt;Longest Substring Without Repeating Characters&lt;/li&gt;
+&lt;li&gt;LSI算法实现篇&lt;/li&gt;
+&lt;li&gt;Permutations&lt;/li&gt;
+&lt;li&gt;CNN：CV、边缘检
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://ylhao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="博客管理" scheme="https://ylhao.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pycharm的安装与使用</title>
+    <link href="https://ylhao.github.io/2018/09/11/55/"/>
+    <id>https://ylhao.github.io/2018/09/11/55/</id>
+    <published>2018-09-11T02:18:51.000Z</published>
+    <updated>2019-06-07T03:50:53.813Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="noopener">下载</a>社区版即可。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>为了避免可能发生的未知错误，安装路径不要使用带有中文或空格的目录。</p><h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>可以选择使用虚拟环境也可以选择不使用虚拟环境。</p><h2 id="配置字体大小"><a href="#配置字体大小" class="headerlink" title="配置字体大小"></a>配置字体大小</h2><p>File -&gt; Settings -&gt; Editor -&gt; Font</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot; target=&quot;_blank&quot; rel=&quot;noop
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://ylhao.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数据结构与算法" scheme="https://ylhao.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows安装Python3.6</title>
+    <link href="https://ylhao.github.io/2018/09/11/9/"/>
+    <id>https://ylhao.github.io/2018/09/11/9/</id>
+    <published>2018-09-11T00:19:44.000Z</published>
+    <updated>2019-06-07T03:50:53.822Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="查看系统类型"><a href="#查看系统类型" class="headerlink" title="查看系统类型"></a>查看系统类型</h2><p>依次进行以下操作，找到“系统类型”相关的信息。</p><pre><code>Win + Rsysteminfo# x64-based PC</code></pre><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>进入<a href="https://www.python.org/" target="_blank" rel="noopener">Python官方网站</a>下载安装包。</p><p>注意以下问题：</p><ol><li>Python 3.5+ 不能安装到 XP 系统或者更老的系统上（Note that Python 3.5+ cannot be used on Windows XP or earlier）。</li><li>确认下载 32 位的安装包还是 64 位的安装包（64 位版本的安装包不可以安装在 32 位的系统上，但是 32 位版本的安装包可以安装在 64 位的系统上），我们只考虑安装与系统对应位数的安装包即可。</li></ol><p>进入官网后，点击 <strong>Downloads</strong>，选择 <strong>Windows</strong>，会看到各个版本的以及各个形式的安装包。</p><p>其中有几点相关的说明：</p><ol><li>Windows x86 为 32 位安装包</li><li>Windows x86-64 为 64 位的安装包</li><li>web-based installer 为基于 web 的安装文件</li><li>embeddable zip file 为基于压缩包的安装文件</li><li>executable installer 为可执行的安装文件（选择下载该文件即可）</li></ol><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><img src="/img/windows_python_1.png" alt="记得添加环境环境"><br><img src="/img/windows_python_2.png" alt="默认勾选或全部勾选即可"><br><img src="/img/windows_python_3.png" alt="如图勾选并修改安装目录"></p><pre><code>Win + Rcmdpythonexit()pip</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://www.cnblogs.com/weven/p/7252917.html" target="_blank" rel="noopener">Python3入门笔记（1） —— windows安装与运行</a></li><li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014316090478912dab2a3a9e8f4ed49d28854b292f85bb000" target="_blank" rel="noopener">安装Python</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;查看系统类型&quot;&gt;&lt;a href=&quot;#查看系统类型&quot; class=&quot;headerlink&quot; title=&quot;查看系统类型&quot;&gt;&lt;/a&gt;查看系统类型&lt;/h2&gt;&lt;p&gt;依次进行以下操作，找到“系统类型”相关的信息。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Win + R
+systemi
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://ylhao.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Python" scheme="https://ylhao.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TensorFlow：保存和加载模型</title>
+    <link href="https://ylhao.github.io/2018/09/07/106/"/>
+    <id>https://ylhao.github.io/2018/09/07/106/</id>
+    <published>2018-09-07T08:02:28.000Z</published>
+    <updated>2019-06-07T03:50:53.757Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code># encoding: utf-8from __future__ import absolute_import, division, print_functionimport osimport tensorflow as tffrom tensorflow import kerasprint(tf.__version__)&quot;&quot;&quot;下载数据&quot;&quot;&quot;(train_images, train_labels), (test_images, test_labels) = tf.keras.datasets.mnist.load_data()train_labels = train_labels[:1000]test_labels = test_labels[:1000]train_images = train_images[:1000].reshape(-1, 28 * 28) / 255.0test_images = test_images[:1000].reshape(-1, 28 * 28) / 255.0&quot;&quot;&quot;定义模型&quot;&quot;&quot;def create_model():    model = tf.keras.models.Sequential([        keras.layers.Dense(512, activation=tf.nn.relu, input_shape=(784,)),        keras.layers.Dropout(0.2),        keras.layers.Dense(10, activation=tf.nn.softmax)    ])     model.compile(optimizer=tf.keras.optimizers.Adam(),                 loss=tf.keras.losses.sparse_categorical_crossentropy,                metrics=[&#39;accuracy&#39;])    return model&quot;&quot;&quot;在训练过程中保存 checkpoints&quot;&quot;&quot;checkpoint_path = &quot;training_1/cp.ckpt&quot;checkpoint_dir = os.path.dirname(checkpoint_path)  # 如果没有对应的目录，会自动创建cp_callback = tf.keras.callbacks.ModelCheckpoint(checkpoint_path,                                                  save_weights_only=True,                                                 verbose=1)model = create_model()model.summary()model.fit(train_images, train_labels,  epochs = 10,           validation_data = (test_images,test_labels),          callbacks = [cp_callback])&quot;&quot;&quot;使用一个没有经过训练得模型对测试集进行预测&quot;&quot;&quot;model = create_model()loss, acc = model.evaluate(test_images, test_labels)print(&quot;Untrained model, accuracy: {:5.2f}%&quot;.format(100*acc))&quot;&quot;&quot;加载之前保留的权重&quot;&quot;&quot;model.load_weights(checkpoint_path)loss, acc = model.evaluate(test_images, test_labels)print(&quot;Restored model, accuracy: {:5.2f}%&quot;.format(100*acc))&quot;&quot;&quot;在文件名中包含 epoch 数，每 5 个 epoch 保存一次&quot;&quot;&quot;checkpoint_path = &quot;training_2/cp-{epoch:04d}.ckpt&quot;checkpoint_dir = os.path.dirname(checkpoint_path)cp_callback = tf.keras.callbacks.ModelCheckpoint(checkpoint_path,                                                 verbose=1,                                                save_weights_only=True,                                                period=5)model = create_model()model.fit(train_images, train_labels,          epochs = 50, callbacks = [cp_callback],          validation_data = (test_images,test_labels),          verbose=0)&quot;&quot;&quot;按照修改时间对 checkpoints 进行排序&quot;&quot;&quot;import pathlibcheckpoints = pathlib.Path(checkpoint_dir).glob(&quot;*.index&quot;)checkpoints = sorted(checkpoints, key=lambda cp:cp.stat().st_mtime)checkpoints = [cp.with_suffix(&#39;&#39;) for cp in checkpoints]print(checkpoints)latest = str(checkpoints[-1])print(latest)model = create_model()model.load_weights(latest)loss, acc = model.evaluate(test_images, test_labels)print(&quot;Restored model, accuracy: {:5.2f}%&quot;.format(100*acc))</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;# encoding: utf-8
+from __future__ import absolute_import, divi
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="https://ylhao.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+</feed>
